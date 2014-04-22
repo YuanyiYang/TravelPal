@@ -23,4 +23,11 @@ angular.module('starter.services', [])
       return friends[friendId];
     }
   }
-});
+})
+
+.factory('MyTrips', function(){
+      
+
+    })
+
+;

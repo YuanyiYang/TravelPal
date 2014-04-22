@@ -1,0 +1,11 @@
+<ion-view title="MyTrips">
+  <ion-content class="has-header padding">
+    <h1>My Trips</h1>
+      <ion-list>
+          <ion-item ng-repeat="trip in trips" type="item-text-wrap" href="#/tab/myTrips/{{trip.id}}">
+              {{trip.name}}
+          </ion-item>
+      </ion-list>
+  </ion-content>
+</ion-view>
+

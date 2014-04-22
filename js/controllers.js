@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {
+.controller('myTripCtrl', function($scope) {
 })
 
 .controller('FriendsCtrl', function($scope, Friends) {
@@ -12,4 +12,17 @@ angular.module('starter.controllers', [])
 })
 
 .controller('AccountCtrl', function($scope) {
-});
+})
+
+.controller('LoginCtrl', function($scope){
+
+
+    })
+
+.controller('GetPasswordCtrl', function($scope){
+
+    })
+
+.controller('RegisterCtrl', function($scope){
+
+    });
