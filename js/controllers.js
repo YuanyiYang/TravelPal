@@ -1,14 +1,7 @@
 angular.module('starter.controllers', [])
 
-.controller('myTripCtrl', function($scope) {
-})
-
-.controller('FriendsCtrl', function($scope, Friends) {
-  $scope.friends = Friends.all();
-})
-
-.controller('FriendDetailCtrl', function($scope, $stateParams, Friends) {
-  $scope.friend = Friends.get($stateParams.friendId);
+.controller('myTripCtrl', function($scope, MyTrips) {
+    $scope.trips = MyTrips.all();
 })
 
 .controller('AccountCtrl', function($scope) {
@@ -24,5 +17,17 @@ angular.module('starter.controllers', [])
     })
 
 .controller('RegisterCtrl', function($scope){
+
+    })
+
+.controller('TopCtrl', function($scope, TopTrips){
+      $scope.trips = TopTrips.all();
+    })
+
+.controller('TripDetailCtrl', function($scope, $stateParams, TopTrips) {
+      $scope.trip = TopTrips.get($stateParams.tripId);
+    })
+
+.controller('searchCtrl', function($scope){
 
     });

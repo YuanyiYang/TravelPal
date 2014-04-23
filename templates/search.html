@@ -1,0 +1,30 @@
+<ion-view title="Search">
+    <ion-content>
+        <div class="list">
+            <label class="item item-input">
+                <span class="input-label">UserEmail</span>
+                <input type="text" ng-model="user.userEmail">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Password</span>
+                <input type="password" ng-model="user.password">
+            </label>
+            <div class="item item-input item-select">
+                <div class="input-label">
+                    Gender
+                </div>
+                <select ng-model="user.gender">
+                    <option>Female </option>
+                    <option selected>Male</option>
+
+                </select>
+            </div>
+        </div>
+
+        <div class="padding">
+            <button class="button button-block button-positive" ng-click="search(user)">
+                Search
+            </button>
+        </div>
+    </ion-content>
+</ion-view>
