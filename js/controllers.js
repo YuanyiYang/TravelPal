@@ -29,5 +29,9 @@ angular.module('starter.controllers', [])
     })
 
 .controller('searchCtrl', function($scope){
+    $scope.ffff = {};
+    })
+
+.controller('updateCtrl', function($scope){
 
     });

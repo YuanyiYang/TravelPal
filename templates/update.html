@@ -1,0 +1,38 @@
+<ion-view title="Update">
+    <ion-content>
+        <div class="list">
+            <label class="item item-input">
+                <span class="input-label">Password</span>
+                <input type="password" ng-model="user.password">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Name</span>
+                <input type="text" ng-model="user.name">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">College</span>
+                <input type="text" ng-model="user.college">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Major</span>
+                <input type="text" ng-model="user.major">
+            </label>
+            <div class="item item-input item-select">
+                <div class="input-label">
+                    Gender
+                </div>
+                <select ng-model="user.gender">
+                    <option>Female </option>
+                    <option selected>Male</option>
+
+                </select>
+            </div>
+        </div>
+
+        <div class="padding">
+            <button class="button button-block button-positive" ng-click="Update(user)">
+                Update-Profile
+            </button>
+        </div>
+    </ion-content>
+</ion-view>
