@@ -1,15 +1,22 @@
 <ion-view title="Top Trips">
+
+    <ion-nav-buttons side="right">
+        <button class="button" ng-click="search()">
+            Search
+        </button>
+    </ion-nav-buttons>
+
   <ion-content class="has-header">
     <ion-list>
       <ion-item ng-repeat="trip in trips" type="item-text-wrap" href="#/tab/top/{{trip.id}}">
         {{trip.name}}
       </ion-item>
     </ion-list>
-      <div class="padding">
-          <p class="text-center">
-              <a href="#/tab/top/search">Search</a>
-          </p>
-      </div>
+      <!--<div class="padding">-->
+          <!--<p class="text-center">-->
+              <!--<a href="#/tab/top/search">Search</a>-->
+          <!--</p>-->
+      <!--</div>-->
 
 
   </ion-content>

@@ -34,4 +34,10 @@ angular.module('starter.controllers', [])
 
 .controller('updateCtrl', function($scope){
 
+    })
+
+.controller('homeCtrl', function($scope){
+      $scope.search = function(){
+        console.log(11111);
+      }
     });

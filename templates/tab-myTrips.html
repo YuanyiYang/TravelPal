@@ -1,4 +1,9 @@
 <ion-view title="MyTrips">
+    <ion-nav-buttons side="right">
+        <button class="button" ng-click="addMyTrip()">
+            New Trip
+        </button>
+    </ion-nav-buttons>
   <ion-content class="has-header padding">
       <ion-list>
           <ion-item ng-repeat="trip in trips" type="item-text-wrap" href="#/tab/myTrips/{{trip.id}}">
