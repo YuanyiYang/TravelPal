@@ -4,25 +4,16 @@ angular.module('starter.services', [])
  * A simple example service that returns some data.
  */
 
-.factory('MyTrips', function(){
-      var hardCodeMyTrips = [
-        { id : 0, name : 'myTrip1'},
-        { id : 1, name : 'myTrip2'},
-        { id : 2, name : 'myTrip3'},
-        { id : 3, name : 'myTrip4'}
-      ];
-
+    .factory('LoginService', function(){
       return {
-        all : function(){
-          return hardCodeMyTrips;
-        },
-
-        get : function(tripId){
-          return hardCodeMyTrips[tripId];
+        save : function(userInfo){
+          console.log("In the loginService, the userInfo is " + angular.toJson(userInfo));
         }
       }
-
     })
+
+
+
 
 .factory('TopTrips', function(){
 
@@ -43,5 +34,6 @@ angular.module('starter.services', [])
         }
       }
     })
+
 
 ;

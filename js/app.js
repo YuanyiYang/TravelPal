@@ -5,9 +5,11 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+var starter = angular.module('starter', ['ionic', 'starter.controllers', 'starter.services']);
 
-    .run(function ($ionicPlatform) {
+
+
+    starter.run(function ($ionicPlatform) {
       $ionicPlatform.ready(function () {
         if (window.StatusBar) {
           // org.apache.cordova.statusbar required
@@ -25,6 +27,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       $stateProvider
 
         // setup an abstract state for the tabs directive
+
+          .state('intro', {
+            url: '/',
+            templateUrl: 'intro.html',
+            controller: 'IntroCtrl'
+          })
+
           .state('tab', {
             url: "/tab",
             abstract: true,
@@ -49,6 +58,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
               'tab-myTrips': {
                 templateUrl: 'templates/trip-detail.html',
                 controller: 'TripDetailCtrl'
+              }
+            }
+          })
+
+          .state('tab.new', {
+            url : '/new',
+            views : {
+              'tab-myTrips' : {
+                templateUrl: 'templates/newTrip.html',
+                controller : 'newTripCtrl'
               }
             }
           })
@@ -138,7 +157,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 
       // if none of the above states are matched, use this as the fallback
-      $urlRouterProvider.otherwise('/tab/myTrips');
+      $urlRouterProvider.otherwise('/');
 
     });
 
