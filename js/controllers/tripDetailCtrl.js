@@ -9,8 +9,6 @@ starter
 
       $scope.detailTrip = TripDetail.getTripDetail($stateParams.parameters);
 
-      $scope.sameUser = hardCodeMyEmail==$scope.detailTrip['owner']['email'];
-
       $scope.chat = function(){
 
       }
