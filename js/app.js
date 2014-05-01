@@ -1,29 +1,18 @@
-// Ionic Starter App
 
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.services' is found in services.js
-// 'starter.controllers' is found in controllers.js
-var starter = angular.module('starter', ['ionic', 'starter.controllers', 'starter.services']);
+var starter = angular.module('starter', ['ionic', 'ngResource', 'starter.controllers', 'starter.services']);
 
 
-
-    starter.run(function ($ionicPlatform) {
-      $ionicPlatform.ready(function () {
-        if (window.StatusBar) {
-          // org.apache.cordova.statusbar required
-          StatusBar.styleDefault();
-        }
-      });
-    })
+starter.run(function ($ionicPlatform) {
+  $ionicPlatform.ready(function () {
+    if (window.StatusBar) {
+      // org.apache.cordova.statusbar required
+      StatusBar.styleDefault();
+    }
+  });
+})
 
     .config(function ($stateProvider, $urlRouterProvider) {
 
-      // Ionic uses AngularUI Router which uses the concept of states
-      // Learn more here: https://github.com/angular-ui/ui-router
-      // Set up the various states which the app can be in.
-      // Each state's controller can be found in controllers.js
       $stateProvider
 
         // setup an abstract state for the tabs directive
@@ -33,6 +22,25 @@ var starter = angular.module('starter', ['ionic', 'starter.controllers', 'starte
             templateUrl: 'intro.html',
             controller: 'IntroCtrl'
           })
+
+          .state('login', {
+            url: '/login',
+            templateUrl: 'templates/login.html',
+            controller: 'LoginCtrl'
+          })
+
+          .state('forgotpassword', {
+            url: '/forget',
+            templateUrl: 'templates/forgot-password.html',
+            controller: 'GetPasswordCtrl'
+          })
+
+          .state('register', {
+            url: '/register',
+            templateUrl: 'templates/register.html',
+            controller: 'RegisterCtrl'
+          })
+
 
           .state('tab', {
             url: "/tab",
@@ -47,7 +55,7 @@ var starter = angular.module('starter', ['ionic', 'starter.controllers', 'starte
             views: {
               'tab-myTrips': {
                 templateUrl: 'templates/tab-myTrips.html',
-                controller: 'myTripCtrl'
+                controller: 'MyTripCtrl'
               }
             }
           })
@@ -63,11 +71,11 @@ var starter = angular.module('starter', ['ionic', 'starter.controllers', 'starte
           })
 
           .state('tab.new', {
-            url : '/new',
-            views : {
-              'tab-myTrips' : {
+            url: '/new',
+            views: {
+              'tab-myTrips': {
                 templateUrl: 'templates/newTrip.html',
-                controller : 'newTripCtrl'
+                controller: 'NewTripCtrl'
               }
             }
           })
@@ -82,12 +90,12 @@ var starter = angular.module('starter', ['ionic', 'starter.controllers', 'starte
             }
           })
 
-          .state('tab.search',{
-            url : '/top/search',
-            views : {
-              'tab-top' : {
+          .state('tab.search', {
+            url: '/top/search',
+            views: {
+              'tab-top': {
                 templateUrl: 'templates/search.html',
-                controller: 'searchCtrl'
+                controller: 'SearchCtrl'
               }
             }
           })
@@ -112,42 +120,54 @@ var starter = angular.module('starter', ['ionic', 'starter.controllers', 'starte
             }
           })
 
-          .state('tab.login', {
-            url: '/account/login',
+//          .state('tab.login', {
+//            url: '/account/login',
+//            views: {
+//              'tab-account': {
+//                templateUrl: 'templates/login.html',
+//                controller: 'LoginCtrl'
+//              }
+//            }
+//          })
+
+//          .state('tab.forgotpassword', {
+//            url: '/account/forgot-password',
+//            views: {
+//              'tab-account': {
+//                templateUrl: 'templates/forgot-password.html',
+//                controller: 'GetPasswordCtrl'
+//              }
+//            }
+//          })
+
+//          .state('tab.register', {
+//            url: '/account/register',
+//            views: {
+//              'tab-account': {
+//                templateUrl: 'templates/register.html',
+//                controller: 'RegisterCtrl'
+//              }
+//            }
+//          })
+
+          .state('tab.logout', {
+            url: '/account/logout',
             views: {
               'tab-account': {
-                templateUrl: 'templates/login.html',
-                controller: 'LoginCtrl'
+                templateUrl: 'templates/logout.html',
+                controller: 'LogoutCtrl'
               }
             }
+
           })
 
-          .state('tab.forgotpassword', {
-            url: '/account/forgot-password',
-            views: {
-              'tab-account': {
-                templateUrl: 'templates/forgot-password.html',
-                controller: 'GetPasswordCtrl'
-              }
-            }
-          })
-
-          .state('tab.register', {
-            url: '/account/register',
-            views: {
-              'tab-account': {
-                templateUrl: 'templates/register.html',
-                controller: 'RegisterCtrl'
-              }
-            }
-          })
 
           .state('tab.update', {
-            url : '/account/update',
+            url: '/account/update',
             views: {
-              'tab-account' : {
+              'tab-account': {
                 templateUrl: 'templates/update.html',
-                controller :'UpdateCtrl'
+                controller: 'UpdateCtrl'
               }
             }
           })

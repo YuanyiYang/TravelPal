@@ -4,13 +4,8 @@ angular.module('starter.controllers', [])
 .controller('AccountCtrl', function($scope) {
 })
 
-.controller('GetPasswordCtrl', function($scope){
 
-    })
 
-.controller('RegisterCtrl', function($scope){
-
-    })
 
 .controller('TopCtrl', function($scope, $state, TopTrips){
       $scope.trips = TopTrips.all();
@@ -20,7 +15,7 @@ angular.module('starter.controllers', [])
       }
     })
 
-.controller('searchCtrl', function($scope){
+.controller('SearchCtrl', function($scope){
     $scope.ffff = {};
     })
 
@@ -28,6 +23,6 @@ angular.module('starter.controllers', [])
 
     })
 
-.controller('homeCtrl', function($scope){
+.controller('LogoutCtrl', function($scope){
 
     });

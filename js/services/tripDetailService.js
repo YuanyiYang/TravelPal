@@ -2,7 +2,7 @@
  * Created by yuanyiyang on 4/27/14.
  */
 
-starter.factory('TripDetail', function(){
+starter.factory('TripDetailService', function(){
 
 
   var hardCodeReturnDetailList = [{

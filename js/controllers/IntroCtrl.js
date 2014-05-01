@@ -4,7 +4,7 @@
 
 starter.controller('IntroCtrl', function($scope, $state, $ionicSlideBoxDelegate){
   $scope.startApp = function(){
-    $state.go('tab.myTrips');
+    $state.go('login');
   };
 
   $scope.previous = function() {
@@ -19,4 +19,4 @@ starter.controller('IntroCtrl', function($scope, $state, $ionicSlideBoxDelegate)
   $scope.slideChanged = function(index) {
     $scope.slideIndex = index;
   };
-})
+});

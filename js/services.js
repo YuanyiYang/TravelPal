@@ -4,16 +4,16 @@ angular.module('starter.services', [])
  * A simple example service that returns some data.
  */
 
-    .factory('LoginService', function(){
-      return {
-        save : function(userInfo){
-          console.log("In the loginService, the userInfo is " + angular.toJson(userInfo));
-        }
-      }
-    })
 
-
-
+/**
+ * Here we simply overwrite the built in service provided by Angular with the $ sign in the beginning.
+ * We write our own exceptionHandler just log out the exception message
+ */
+//.factory('$exceptionHandler', function(){
+//      return function(exception){
+//          console.log("exception handled: " + exception.message);
+//      };
+//    })
 
 .factory('TopTrips', function(){
 

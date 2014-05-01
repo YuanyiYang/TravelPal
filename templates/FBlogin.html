@@ -6,25 +6,23 @@
         </button>
     </ion-nav-buttons>
     <ion-content>
-        <form name="loginForm">
         <div class="list">
             <label class="item item-input">
                 <span class="input-label">UserEmail</span>
-                <input type="email" required ng-model="user.userEmail">
+                <input type="text" ng-model="user.userEmail">
             </label>
             <label class="item item-input">
                 <span class="input-label">Password</span>
-                <input type="password" required ng-model="user.password">
+                <input type="password" ng-model="user.password">
             </label>
         </div>
         <div class="padding">
-            <button class="button button-block button-positive" ng-disabled="loginForm.$invalid" ng-click="signIn(user, loginForm)">
+            <button class="button button-block button-positive" ng-click="signIn(user)">
                 Sign-In
             </button>
             <p class="text-center">
                 <a href="#/forget">Forgot password</a>
             </p>
         </div>
-        </form>
     </ion-content>
 </ion-view>

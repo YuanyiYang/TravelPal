@@ -1,31 +1,32 @@
 <ion-view title="Register">
     <ion-content>
+        <form name="registerForm">
         <div class="list">
             <label class="item item-input">
                 <span class="input-label">UserEmail</span>
-                <input type="text" ng-model="user.userEmail">
+                <input type="email" required ng-model="user.userEmail">
             </label>
             <label class="item item-input">
                 <span class="input-label">Password</span>
-                <input type="password" ng-model="user.password">
+                <input type="password" required ng-model="user.password">
             </label>
             <label class="item item-input">
                 <span class="input-label">Name</span>
-                <input type="text" ng-model="user.name">
+                <input type="text" required ng-model="user.name">
             </label>
             <label class="item item-input">
                 <span class="input-label">College</span>
-                <input type="text" ng-model="user.college">
+                <input type="text" required ng-model="user.college">
             </label>
             <label class="item item-input">
                 <span class="input-label">Major</span>
-                <input type="text" ng-model="user.major">
+                <input type="text" required ng-model="user.major">
             </label>
             <div class="item item-input item-select">
                 <div class="input-label">
                     Gender
                 </div>
-                <select ng-model="user.gender">
+                <select ng-model="user.gender" required>
                     <option>Female </option>
                     <option selected>Male</option>
 
@@ -34,9 +35,10 @@
         </div>
 
         <div class="padding">
-            <button class="button button-block button-positive" ng-click="signIn(user)">
-                Sign-In
+            <button class="button button-block button-positive" ng-disabled="registerForm.$invalid" ng-click="register(user, registerForm)">
+                Register
             </button>
         </div>
+        </form>
     </ion-content>
 </ion-view>

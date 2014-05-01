@@ -16,6 +16,62 @@
 
 
 
+      <div class="list">
+
+          <div class="item item-divider">
+              Candy Bars
+          </div>
+
+          <label class="item item-input">
+              <input type="text" placeholder="Destination" ng-model="trip.destination">
+          </label>
+          <label class="item item-input">
+              <input type="text" placeholder="Expected Fee" ng-model="trip.fee">
+          </label>
+          <label class="item item-input">
+              <input type="text" placeholder="Expected Companions" ng-model="trip.numberCom">
+          </label>
+          <label class="item item-input">
+              <input type="text" placeholder="His/Her Major" ng-model="trip.major">
+          </label>
+          <label class="item item-input">
+              <input type="text" placeholder="His/Her College " ng-model="trip.college">
+          </label>
+          <label class="item item-input">
+              <input type="text" placeholder="His/Her age " ng-model="trip.age">
+          </label>
+
+          <label class="item item-input">
+              <span class="input-label">Date</span>
+              <input type="date" ng-model="trip.date">
+          </label>
+
+          <div class="item item-input item-select">
+              <div class="input-label">
+                  Gender
+              </div>
+              <select ng-model="trip.gender">
+                  <option>Female </option>
+                  <option selected>Male</option>
+
+              </select>
+          </div>
+
+          <div class="item item-input item-select">
+              <div class="input-label">
+                  Is Your Date Flexiable
+              </div>
+              <select ng-model="trip.flex">
+                  <option>Yes </option>
+                  <option selected>No</option>
+              </select>
+          </div>
+
+          <label class="item item-input">
+              <textarea placeholder="Comment" ng-model="trip.comment"></textarea>
+          </label>
+      </div>
+
       <!--<div class="item item-button-right">-->
            <!--Contact Me-->
           <!--<button class="button button-positive">-->

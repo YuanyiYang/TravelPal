@@ -2,7 +2,7 @@
  * Created by yuanyiyang on 4/27/14.
  */
 
-starter.controller('newTripCtrl', function($scope, AddNewTripService){
+starter.controller('NewTripCtrl', function($scope, AddNewTripService){
 
   $scope.trip;
 
