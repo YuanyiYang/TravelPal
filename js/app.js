@@ -1,5 +1,5 @@
 
-var starter = angular.module('starter', ['ionic', 'ngResource', 'starter.controllers', 'starter.services']);
+var starter = angular.module('starter', ['ionic', 'ngResource', 'ngCookies', 'starter.controllers', 'starter.services']);
 
 
 starter.run(function ($ionicPlatform) {
@@ -56,6 +56,29 @@ starter.run(function ($ionicPlatform) {
               'tab-myTrips': {
                 templateUrl: 'templates/tab-myTrips.html',
                 controller: 'MyTripCtrl'
+              }
+            },
+            resolve : {
+
+              MyTripsService : 'MyTripsService',
+
+              myTripsPromise : function(MyTripsService, $q){
+
+                var deferred = $q.defer();
+                MyTripsService.all().$promise.then(
+                    function(data){
+                      deferred.resolve(data);
+                    },
+                    function(){
+                      console.log('MyTripsService rejected');
+                    }
+                );
+                return deferred.promise;
+
+                //console.log(MyTripsService.all().$promise);
+                //return MyTripsService.all().$promise;
+//                console.log(MyTripsService.all());
+//                return MyTripsService.all();
               }
             }
           })
@@ -181,3 +204,12 @@ starter.run(function ($ionicPlatform) {
 
     });
 
+
+starter.config(function($httpProvider) {
+  $httpProvider.defaults.useXDomain = true;
+  delete $httpProvider.defaults.headers.common['X-Requested-With'];
+  $httpProvider.defaults.headers.put['Content-Type'] =
+      'application/x-www-form-urlencoded';
+  $httpProvider.defaults.headers.post['Content-Type'] =
+      'application/x-www-form-urlencoded';
+});

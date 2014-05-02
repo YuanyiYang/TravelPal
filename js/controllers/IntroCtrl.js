@@ -2,21 +2,21 @@
  * Created by yuanyiyang on 4/27/14.
  */
 
-starter.controller('IntroCtrl', function($scope, $state, $ionicSlideBoxDelegate){
-  $scope.startApp = function(){
+starter.controller('IntroCtrl', function ($scope, $state, $ionicSlideBoxDelegate) {
+  $scope.startApp = function () {
     $state.go('login');
   };
 
-  $scope.previous = function() {
+  $scope.previous = function () {
     $ionicSlideBoxDelegate.previous();
   };
 
-  $scope.next = function() {
+  $scope.next = function () {
     $ionicSlideBoxDelegate.next();
   };
 
   // Called each time the slide changes
-  $scope.slideChanged = function(index) {
+  $scope.slideChanged = function (index) {
     $scope.slideIndex = index;
   };
 });

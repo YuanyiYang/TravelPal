@@ -4,11 +4,10 @@
 
 starter.factory('LoginService', function($resource , $log){
 
-  var hardCodeUser = {
-    email : '111@111',
-    name : 'yyy'
-  };
 
+  var url='http://127.0.0.1:3000/api/signin';
+
+  var resource = $resource(url, {},{headers: { 'Content-Type': 'application/json' }});
 
   return {
 
@@ -21,13 +20,18 @@ starter.factory('LoginService', function($resource , $log){
 
     login : function(user){
       $log.log(user);
-      return $resource('/user/', {}).get({email : user['usermail'], password:user['password']});
+      var toServerData = {sessions : { email : user['userEmail'], password:user['password']}};
+      $log.log("In loginService, send to server " + angular.toJson(toServerData));
+      return resource.save(angular.toJson(toServerData));
     },
 
 
+    getAllUser : function(){
+      return resource.query()
+    },
 
-    save : function(userInfo){
-      console.log("In the loginService, the userInfo is " + angular.toJson(userInfo));
+    save : function(user){
+      return resource.save(user);
     }
   }
 });

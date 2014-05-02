@@ -21,8 +21,4 @@ angular.module('starter.controllers', [])
 
 .controller('UpdateCtrl', function($scope){
 
-    })
-
-.controller('LogoutCtrl', function($scope){
-
     });

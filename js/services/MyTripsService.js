@@ -2,7 +2,7 @@
  * Created by yuanyiyang on 4/27/14.
  */
 
-starter.factory('MyTripsService', function(){
+starter.factory('MyTripsService', function($resource,$cookieStore){
 
   var hardCodeMyTrips = [
     { id : 1111, name : 'myTrip1'},
@@ -11,9 +11,14 @@ starter.factory('MyTripsService', function(){
     { id : 4444, name : 'myTrip4'}
   ];
 
+  var resource = $resource('/trips/:email',{});
+
+
   return {
     all : function(){
-      return hardCodeMyTrips;
+
+      return resource.get({email : $cookieStore.get('email')});
+ //    return hardCodeMyTrips;
     },
 
     get : function(tripId){

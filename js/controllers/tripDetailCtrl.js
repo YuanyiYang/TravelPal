@@ -3,13 +3,13 @@
  */
 
 starter
-    .controller('TripDetailCtrl', function($scope, $stateParams, TripDetailService) {
+    .controller('TripDetailCtrl', function ($scope, $stateParams, TripDetailService) {
 
       var hardCodeMyEmail = '1111@111';
 
       $scope.detailTrip = TripDetailService.getTripDetail($stateParams.parameters);
 
-      $scope.chat = function(){
+      $scope.chat = function () {
 
       }
 
