@@ -2,8 +2,8 @@
  * Created by yuanyiyang on 4/27/14.
  */
 
-starter.controller('MyTripCtrl', function ($scope, $state, myTripsPromise) {
-//  $scope.trips = myTripsPromise;
+starter.controller('MyTripCtrl', function ($scope, $state, myTripsPromise ) {  //myTripsPromise MyTripsService
+  $scope.trips = myTripsPromise.all();
 
   myTripsPromise.then(
     function(){

@@ -29,7 +29,7 @@ starter.run(function ($ionicPlatform) {
             controller: 'LoginCtrl'
           })
 
-          .state('forgotpassword', {
+              .state('forgotpassword', {
             url: '/forget',
             templateUrl: 'templates/forgot-password.html',
             controller: 'GetPasswordCtrl'
@@ -60,6 +60,7 @@ starter.run(function ($ionicPlatform) {
             },
             resolve : {
 
+
               MyTripsService : 'MyTripsService',
 
               myTripsPromise : function(MyTripsService, $q){
@@ -75,10 +76,6 @@ starter.run(function ($ionicPlatform) {
                 );
                 return deferred.promise;
 
-                //console.log(MyTripsService.all().$promise);
-                //return MyTripsService.all().$promise;
-//                console.log(MyTripsService.all());
-//                return MyTripsService.all();
               }
             }
           })
@@ -206,10 +203,11 @@ starter.run(function ($ionicPlatform) {
 
 
 starter.config(function($httpProvider) {
+
   $httpProvider.defaults.useXDomain = true;
   delete $httpProvider.defaults.headers.common['X-Requested-With'];
-  $httpProvider.defaults.headers.put['Content-Type'] =
-      'application/x-www-form-urlencoded';
+//  $httpProvider.defaults.headers.put['Content-Type'] =
+//      'application/x-www-form-urlencoded';
   $httpProvider.defaults.headers.post['Content-Type'] =
       'application/x-www-form-urlencoded';
 });

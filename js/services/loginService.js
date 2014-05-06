@@ -2,12 +2,14 @@
  * Created by yuanyiyang on 4/29/14.
  */
 
-starter.factory('LoginService', function($resource , $log){
+starter.factory('LoginService', function($resource , $log, $http){
 
 
   var url='http://127.0.0.1:3000/api/signin';
 
-  var resource = $resource(url, {},{headers: { 'Content-Type': 'application/json' }});
+  $http.defaults.useXDomain = true;
+
+  var resource = $resource(url, {},{headers: { '  Content-Type': 'application/json' }});
 
   return {
 

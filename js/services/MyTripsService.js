@@ -18,7 +18,7 @@ starter.factory('MyTripsService', function($resource,$cookieStore){
     all : function(){
 
       return resource.get({email : $cookieStore.get('email')});
- //    return hardCodeMyTrips;
+//     return hardCodeMyTrips;
     },
 
     get : function(tripId){

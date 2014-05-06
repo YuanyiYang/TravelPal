@@ -19,7 +19,8 @@ starter.controller('LoginCtrl', function ($scope, $state, $log, $cookieStore, Lo
           function (response) {
 //            $cookieStore.put('email', '222@222');
 //            $cookieStore.put('password','222');
-            $log.log($cookieStore.get('email'));
+            $log.log($cookieStore.get('email') + " promise reject in loginCtrl");
+            $state.go('tab.myTrips');
  //           $state.go('tab.myTrips');
 //            $log.error(response);
           }
