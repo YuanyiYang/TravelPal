@@ -4,21 +4,17 @@
 
 starter.factory('MyTripsService', function($resource,$cookieStore){
 
-  var hardCodeMyTrips = [
-    { id : 1111, name : 'myTrip1'},
-    { id : 2222, name : 'myTrip2'},
-    { id : 3333, name : 'myTrip3'},
-    { id : 4444, name : 'myTrip4'}
-  ];
-
   var url = 'http://127.0.0.1:3000/api/users/:userId/trips';
 
-  var resource = $resource('/trips/:email',{});
+  var resource = $resource(url,{});
 
 
   return {
     all : function(){
-      return resource.get({token : $cookieStore.get('token')});
+      return resource.get({
+        userId : $cookieStore.get('id'),
+        token : $cookieStore.get('accessToken')}
+      );
     },
 
     get : function(tripId){

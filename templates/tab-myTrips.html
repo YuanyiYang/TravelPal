@@ -8,7 +8,7 @@
   <ion-content class="has-header padding">
       <ion-list>
           <ion-item ng-repeat="trip in trips" type="item-text-wrap" href="#/tab/myTrips/{{trip.id}}">
-              {{trip.name}}
+              Destination: {{trip['destination']}}
           </ion-item>
       </ion-list>
   </ion-content>

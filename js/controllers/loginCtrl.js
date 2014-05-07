@@ -16,22 +16,21 @@ starter.controller('LoginCtrl', function ($scope, $state, $log, $cookieStore, $i
 
   $scope.signIn = function (user, loginForm) {
 //    console.log(loginForm); //show the detail of the form; dirty stands for substitution
-
-
-
     if (loginForm.$valid) {
-
-      LoginService.login(user)
-          .$promise.then(
+      LoginService.login(user).$promise.then(
           function (data) {
-            $log.log("Login Data from Server " + angular.toJson(data));
-           // $cookieStore.put('userEmail', '11');
+            var metaInfo = data['meta'];
+            if(metaInfo['status'] == '200' || metaInfo['msg'] == 'OK'){
+              var token = data['data']['token'];
+              var id = data['data']['id'];
+              $cookieStore.put('accessToken', token);
+              $cookieStore.put('id', id);
+            }
             $state.go('tab.myTrips');
           },
           function (response) {
-//            $cookieStore.put('email', '222@222');
-//            $cookieStore.put('password','222');
             $log.error('LoginRequest rejected by Server');
+            showAlert();
           }
       );
 //      window.alert(user.userEmail);

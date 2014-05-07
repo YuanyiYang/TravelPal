@@ -59,23 +59,18 @@ starter.run(function ($ionicPlatform) {
               }
             },
             resolve : {
-
-
-              MyTripsService : 'MyTripsService',
-
-              myTripsPromise : function(MyTripsService, $q){
-
-                var deferred = $q.defer();
-                MyTripsService.all().$promise.then(
-                    function(data){
-                      deferred.resolve(data);
-                    },
-                    function(){
-                      console.log('MyTripsService rejected');
-                    }
-                );
-                return deferred.promise;
-
+              myTrips : function(MyTripsService){
+                return MyTripsService.all().$promise.then(function(data){
+                  //console.log('In app.js of resolve property of myTrips');
+                  //console.log(angular.toJson(data));
+                  if(data['meta']['status'] == '200' && data['meta']['msg']=='OK'){
+                    return data['data'];
+                  }else{
+                    console.log('In appJS resolve for myTrips, undefined error!');
+                  }
+                }, function(response){
+                  console.log('ERROR');
+                })
               }
             }
           })

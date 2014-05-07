@@ -43,7 +43,7 @@ starter.controller('RegisterCtrl', function ($scope, $log, $state, $ionicPopup, 
       RegisterService.register(user).$promise.then(function(data){
         //$log.log("successful register");
         var meta = data['meta'];
-        if(meta['status']== '200' || meta['msg']=='OK'){
+        if(meta['status']== '200' && meta['msg']=='OK'){
           showConfirm();
         }
       },function(){
