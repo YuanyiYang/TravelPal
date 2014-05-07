@@ -6,13 +6,14 @@ starter.factory('MyTripsService', function($resource,$cookieStore){
 
   var url = 'http://127.0.0.1:3000/api/users/:userId/trips';
 
+  var remoteUrl = 'http://websys1.stern.nyu.edu:7001/api/users/:userId/trips';
   var resource = $resource(url,{});
 
 
   return {
     all : function(){
       return resource.get({
-        userId : $cookieStore.get('id'),
+        userId : $cookieStore.get('userId'),
         token : $cookieStore.get('accessToken')}
       );
     },

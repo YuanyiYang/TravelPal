@@ -1,20 +1,5 @@
 angular.module('starter.services', [])
 
-/**
- * A simple example service that returns some data.
- */
-
-
-/**
- * Here we simply overwrite the built in service provided by Angular with the $ sign in the beginning.
- * We write our own exceptionHandler just log out the exception message
- */
-//.factory('$exceptionHandler', function(){
-//      return function(exception){
-//          console.log("exception handled: " + exception.message);
-//      };
-//    })
-
 .factory('TopTrips', function(){
 
       var hardCodeTrips = [
@@ -35,5 +20,20 @@ angular.module('starter.services', [])
       }
     })
 
+.factory('LogoutService', function($resource, $cookieStore){
 
+      var url = 'http://localhost:3000/api/signout/';
+
+      var resource = $resource(url, {});
+
+      return {
+        logout : function(){
+          var dataToServer = {
+            token : $cookieStore.get('accessToken')
+          };
+          return resource.delete(dataToServer);
+        }
+      }
+
+    })
 ;

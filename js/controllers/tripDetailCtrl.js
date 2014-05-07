@@ -3,14 +3,14 @@
  */
 
 starter
-    .controller('TripDetailCtrl', function ($scope, $stateParams, TripDetailService) {
+    .controller('TripDetailCtrl', function ($scope, myTripDetail, $log ) {
 
-      var hardCodeMyEmail = '1111@111';
 
-      $scope.detailTrip = TripDetailService.getTripDetail($stateParams.parameters);
-
+      $scope.detailTrip = myTripDetail;
+      $scope.owner = $scope.detailTrip['owner'];
+      $scope.participants = $scope.detailTrip['participants'];
       $scope.chat = function () {
 
-      }
+      };
 
     });

@@ -2,69 +2,23 @@
  * Created by yuanyiyang on 4/27/14.
  */
 
-starter.factory('TripDetailService', function(){
+starter.factory('TripDetailService', function($resource, $cookieStore){
 
+  var url = 'http://localhost:3000/api/trips/:tripId';
 
-  var hardCodeReturnDetailList = [{
-    'message' : '200',
-    'owner' : {
-      'email' : '1111@111',
-      'name' : '1111'
-    },
-    'tripInfo': {
-      'tripId' : '1111',
-      'destination' : 'NY',
-      'time' : '2014-04-14 : 2014-5-14',
-      'fee' : '$1000',
-      'companion' : {
-        'sex' : 'female',
-        'major' : 'CS',
-        'age' : '24',
-        'college' : 'NYU'
-      },
-      'timeFlexible' : 'true',
-      'message' : 'TBA'
-    }
-  },
-    {
-      'message' : '200',
-      'owner' : {
-        'email' : '2222@222',
-        'name' : '2222'
-      },
-      'tripInfo': {
-        'tripId' : '2222',
-        'destination' : 'NY',
-        'time' : '2014-04-14 : 2014-5-14',
-        'fee' : '$1000',
-        'companion' : {
-          'sex' : 'female',
-          'major' : 'CS',
-          'age' : '24',
-          'college' : 'NYU'
-        },
-        'timeFlexible' : 'true',
-        'message' : 'TBA'
-      }
-    }
-  ];
-
-
+  var resource = $resource(url, {});
 
   return {
 
     getTripDetail : function(tripId){
-      return hardCodeReturnDetailList['0'];
+
+      var toServerData = {
+        tripId : tripId,
+        token : $cookieStore.get('accessToken')
+      };
+      console.log("In tripDetail Service, send to server " + angular.toJson(toServerData));
+      return resource.get(toServerData);
     }
-
-
-//    getOwner : function(){
-//      return hardCodeOwner;
-//    },
-//
-//    getTripDetail : function(){
-//      return hardCodeDetailTrip;
-//    }
   }
 
-})
+});

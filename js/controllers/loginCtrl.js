@@ -24,7 +24,7 @@ starter.controller('LoginCtrl', function ($scope, $state, $log, $cookieStore, $i
               var token = data['data']['token'];
               var id = data['data']['id'];
               $cookieStore.put('accessToken', token);
-              $cookieStore.put('id', id);
+              $cookieStore.put('userId', id);
             }
             $state.go('tab.myTrips');
           },

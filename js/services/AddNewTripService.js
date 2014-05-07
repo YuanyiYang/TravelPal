@@ -6,6 +6,8 @@ starter.factory('AddNewTripService', function($resource, $cookieStore){
 
   var url = 'http://localhost:3000/api/trips/';
 
+  var remoteUrl = 'http://websys1.stern.nyu.edu:7001/api/trips/';
+
   var resource = $resource(url, {});
 
   return {

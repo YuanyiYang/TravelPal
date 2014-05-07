@@ -82,6 +82,17 @@ starter.run(function ($ionicPlatform) {
                 templateUrl: 'templates/trip-detail.html',
                 controller: 'TripDetailCtrl'
               }
+            },
+            resolve : {
+              myTripDetail : function(TripDetailService, $stateParams, $log){
+                return TripDetailService.getTripDetail($stateParams['tripId']).$promise.then(function(data){
+                  if(data['meta']['status'] == '200' && data['meta']['msg']=='OK'){
+                    return data;
+                  }
+                }, function(){
+                  $log.error('In app JS, cannot route to my trip detail');
+                });
+              }
             }
           })
 
@@ -134,36 +145,6 @@ starter.run(function ($ionicPlatform) {
               }
             }
           })
-
-//          .state('tab.login', {
-//            url: '/account/login',
-//            views: {
-//              'tab-account': {
-//                templateUrl: 'templates/login.html',
-//                controller: 'LoginCtrl'
-//              }
-//            }
-//          })
-
-//          .state('tab.forgotpassword', {
-//            url: '/account/forgot-password',
-//            views: {
-//              'tab-account': {
-//                templateUrl: 'templates/forgot-password.html',
-//                controller: 'GetPasswordCtrl'
-//              }
-//            }
-//          })
-
-//          .state('tab.register', {
-//            url: '/account/register',
-//            views: {
-//              'tab-account': {
-//                templateUrl: 'templates/register.html',
-//                controller: 'RegisterCtrl'
-//              }
-//            }
-//          })
 
           .state('tab.logout', {
             url: '/account/logout',

@@ -6,8 +6,8 @@
         </button>
     </ion-nav-buttons>
   <ion-content class="has-header padding">
-      <ion-list>
-          <ion-item ng-repeat="trip in trips" type="item-text-wrap" href="#/tab/myTrips/{{trip.id}}">
+      <ion-list can-swipe="true" option-buttons="itemButtons">
+          <ion-item ng-repeat="trip in trips" type="item-text-wrap" href="#/tab/myTrips/{{trip['id']}}" item="trip">
               Destination: {{trip['destination']}}
           </ion-item>
       </ion-list>

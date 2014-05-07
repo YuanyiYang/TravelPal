@@ -2,17 +2,19 @@
  * Created by yuanyiyang on 5/1/14.
  */
 
-starter.controller('LogoutCtrl', function ($scope, $timeout, $state, $cookieStore) {
+starter.controller('LogoutCtrl', function ($scope, $timeout, $state, $cookieStore, $log, LogoutService) {
 
-  var promise = $timeout(function () {
-    //manipulate the cookies here
-    $cookieStore.remove('email');
-    $cookieStore.remove('password');
-    $state.go('login');
-  }, 2000);
-
-//  $scope.cancel = function(){
-//    $timeout.cancel(promise);
-//  };
+  LogoutService.logout().$promise.then(function(data){
+    if(data['meta']['status'] == '200' && data['meta']['msg']=='OK'){
+      $log.log('Logout Successfully');
+      $timeout(function () {
+        $cookieStore.remove('accessToken');
+        $state.go('login');
+      }, 2000)
+    }
+  }, function(response){
+    $log.info(response);
+    $log.error('Logout Error')
+  });
 
 });
