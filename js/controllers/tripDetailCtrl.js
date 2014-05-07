@@ -6,7 +6,7 @@ starter
     .controller('TripDetailCtrl', function ($scope, myTripDetail, $log ) {
 
 
-      $scope.detailTrip = myTripDetail;
+      $scope.detailTrip = myTripDetail['data'];
       $scope.owner = $scope.detailTrip['owner'];
       $scope.participants = $scope.detailTrip['participants'];
       $scope.chat = function () {

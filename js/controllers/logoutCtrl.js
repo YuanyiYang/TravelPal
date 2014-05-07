@@ -9,6 +9,7 @@ starter.controller('LogoutCtrl', function ($scope, $timeout, $state, $cookieStor
       $log.log('Logout Successfully');
       $timeout(function () {
         $cookieStore.remove('accessToken');
+        $cookieStore.remove('userId');
         $state.go('login');
       }, 2000)
     }

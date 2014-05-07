@@ -16,10 +16,6 @@ starter.factory('MyTripsService', function($resource,$cookieStore){
         userId : $cookieStore.get('userId'),
         token : $cookieStore.get('accessToken')}
       );
-    },
-
-    get : function(tripId){
-      return hardCodeMyTrips[tripId];
     }
   }
 });

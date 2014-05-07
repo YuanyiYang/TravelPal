@@ -4,7 +4,6 @@
 
 starter.controller('MyTripCtrl', function ($scope, $state ,myTrips) {
   $scope.trips = myTrips['data'];
-
   var removeTrip = function(trip){
     console.log($scope.trips.indexOf(trip));
     $scope.trips.splice($scope.trips.indexOf(trip),1);

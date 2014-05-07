@@ -64,7 +64,7 @@ starter.run(function ($ionicPlatform) {
                   //console.log('In app.js of resolve property of myTrips');
                   //console.log(angular.toJson(data));
                   if(data['meta']['status'] == '200' && data['meta']['msg']=='OK'){
-                    return data['data'];
+                    return data;
                   }else{
                     console.log('In appJS resolve for myTrips, undefined error!');
                   }
