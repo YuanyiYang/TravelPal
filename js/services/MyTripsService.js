@@ -11,14 +11,14 @@ starter.factory('MyTripsService', function($resource,$cookieStore){
     { id : 4444, name : 'myTrip4'}
   ];
 
+  var url = 'http://127.0.0.1:3000/api/users/:userId/trips';
+
   var resource = $resource('/trips/:email',{});
 
 
   return {
     all : function(){
-
-      return resource.get({email : $cookieStore.get('email')});
-//     return hardCodeMyTrips;
+      return resource.get({token : $cookieStore.get('token')});
     },
 
     get : function(tripId){

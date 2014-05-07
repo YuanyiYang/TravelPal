@@ -7,34 +7,17 @@ starter.factory('LoginService', function($resource , $log, $http){
 
   var url='http://127.0.0.1:3000/api/signin';
 
-  $http.defaults.useXDomain = true;
-
-  var resource = $resource(url, {},{headers: { '  Content-Type': 'application/json' }});
+  var resource = $resource(url, {});
 
   return {
 
-//    login : function(user){
-//      var deferred = $q.defer();
-//      deferred.resolve(hardCodeUser);
-//      return deferred.promise;
-//
-//    },
-
     login : function(user){
       $log.log(user);
-      var toServerData = {sessions : { email : user['userEmail'], password:user['password']}};
+      var toServerData = {session : { email : user['userEmail'], password:user['password']}};
       $log.log("In loginService, send to server " + angular.toJson(toServerData));
       return resource.save(angular.toJson(toServerData));
-    },
-
-
-    getAllUser : function(){
-      return resource.query()
-    },
-
-    save : function(user){
-      return resource.save(user);
     }
+
   }
 });
 

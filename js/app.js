@@ -208,6 +208,8 @@ starter.config(function($httpProvider) {
   delete $httpProvider.defaults.headers.common['X-Requested-With'];
 //  $httpProvider.defaults.headers.put['Content-Type'] =
 //      'application/x-www-form-urlencoded';
-  $httpProvider.defaults.headers.post['Content-Type'] =
-      'application/x-www-form-urlencoded';
+//  $httpProvider.defaults.headers.post['Content-Type'] =
+//      'application/x-www-form-urlencoded';
+
+  $httpProvider.defaults.headers.post['Content-Type'] = 'application/json';
 });
