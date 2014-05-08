@@ -2,27 +2,35 @@
     <ion-content>
 
         <div class="list list-inset">
-            <label class="item item-input">
-                <input type="text" placeholder="Place">
-            </label>
-            <label class="item item-input">
-                <input type="text" placeholder="Time">
-            </label>
-            <label class="item item-input">
-                <input type="text" placeholder="College">
-            </label>
-            <label class="item item-input">
-                <input type="text" placeholder="Major">
-            </label>
-            <label class="item item-input">
-                <input type="text" placeholder="Expected Fee">
-            </label>
-        </div>
+            <form name="searchForm">
+                <label class="item item-input">
+                    <span class="input-label">Destination</span>
+                    <input type="text" placeholder="Place" ng-model="sTrip.destination">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Start_Date</span>
+                    <input type="date" ng-model="sTrip.startDate">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">End_Date</span>
+                    <input type="date" ng-model="sTrip.endDate">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Fee</span>
+                    <input type="number" placeholder="Expected Fee" integer ng-model="sTrip.fee" name="fee">
+                </label>
 
+                <div class="item item-input" ng-show="searchForm.fee.$error.integer">
+                    <span class="input-label" style="color: red">This is not a valid number!</span>
+                </div>
+
+            </form>
+        </div>
         <div class="padding">
-            <button class="button button-block button-positive" ng-click="search(user)">
+            <button class="button button-block button-positive" ng-click="search(sTrip)">
                 Search
             </button>
         </div>
+
     </ion-content>
 </ion-view>

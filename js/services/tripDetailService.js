@@ -18,7 +18,7 @@ starter.factory('TripDetailService', function ($resource, $cookieStore) {
         tripId: tripId,
         token: $cookieStore.get('accessToken')
       };
-      console.log("In tripDetail Service, send to server " + angular.toJson(toServerData));
+      console.log("In tripDetail Service, get to server " + angular.toJson(toServerData));
       return resource.get(toServerData);
     },
 
@@ -34,6 +34,16 @@ starter.factory('TripDetailService', function ($resource, $cookieStore) {
       };
       console.log("In tripDetailService, trip detail is " + angular.toJson(tripDetail));
       return resource.save(angular.toJson(toServerData));
+    },
+
+    deleteTrip : function(tripId){
+      var deleteResource = $resource(url, {tripId : '@id'},
+          {delete : { method : 'DELETE',  params : {token : $cookieStore.get('accessToken')}}});
+      var toServerData = {
+        tripId: tripId
+      };
+      console.log("In tripDetail Service, delete to server " + angular.toJson(toServerData));
+      return deleteResource.delete(toServerData);
     }
   }
 });

@@ -96,6 +96,16 @@ starter.run(function ($ionicPlatform) {
             }
           })
 
+          .state('tab.editTrip', {
+            url : '/myTrips/:tripId/edit',
+            views : {
+              'tab-myTrips' : {
+                templateUrl: 'templates/editTrip.html',
+                controller: 'EditTripCtrl'
+              }
+            }
+          })
+
           .state('tab.new', {
             url: '/new',
             views: {

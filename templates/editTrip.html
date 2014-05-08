@@ -1,0 +1,81 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'firend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+
+<ion-view title="New Trip">
+
+
+  <ion-content has-header="true" padding="true">
+
+      <ion-nav-buttons side="right">
+          <button class="button button-positive button-clear no-animation"
+                  ng-disabled="newTripForm.$invalid" ng-click="submitTrip(trip, newTripForm)">
+              Submit
+          </button>
+      </ion-nav-buttons>
+
+      <div class="list">
+          <form name="newTripForm">
+          <label class="item item-input">
+              <input type="text" placeholder="Destination" required ng-model="trip.destination">
+          </label>
+          <label class="item item-input">
+              <input type="number" placeholder="Expected Fee" ng-model="trip.fee" required integer name="fee">
+          </label>
+          <div class="item item-input" ng-show="newTripForm.fee.$error.integer">
+              <span class="input-label" style="color: red">This is not a valid number!</span>
+          </div>
+          <!--<label class="item item-input">-->
+              <!--<input type="text" placeholder="Expected Companions" ng-model="trip.numberCom">-->
+          <!--</label>-->
+          <!--<label class="item item-input">-->
+              <!--<input type="text" placeholder="His/Her Major" ng-model="trip.major">-->
+          <!--</label>-->
+          <!--<label class="item item-input">-->
+              <!--<input type="text" placeholder="His/Her College " ng-model="trip.college">-->
+          <!--</label>-->
+          <!--<label class="item item-input">-->
+              <!--<input type="text" placeholder="His/Her age " ng-model="trip.age">-->
+          <!--</label>-->
+
+          <label class="item item-input">
+              <span class="input-label">Start_Date</span>
+              <input type="date" required ng-model="trip.startDate">
+          </label>
+
+          <label class="item item-input">
+              <span class="input-label">End_Date</span>
+              <input type="date" required ng-model="trip.endDate">
+          </label>
+          <!--<div class="item item-input item-select">-->
+              <!--<div class="input-label">-->
+                  <!--Gender-->
+              <!--</div>-->
+              <!--<select ng-model="trip.gender">-->
+                  <!--<option>Female </option>-->
+                  <!--<option selected>Male</option>-->
+
+              <!--</select>-->
+          <!--</div>-->
+
+          <!--<div class="item item-input item-select">-->
+              <!--<div class="input-label">-->
+                  <!--Is Your Date Flexiable-->
+              <!--</div>-->
+              <!--<select ng-model="trip.flex">-->
+                  <!--<option>Yes </option>-->
+                  <!--<option selected>No</option>-->
+              <!--</select>-->
+          <!--</div>-->
+
+          <!--<label class="item item-input">-->
+              <!--<textarea placeholder="Comment" ng-model="trip.comment"></textarea>-->
+          <!--</label>-->
+          </form>
+      </div>
+
+  </ion-content>
+</ion-view>
