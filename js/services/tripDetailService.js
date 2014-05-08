@@ -8,7 +8,7 @@ starter.factory('TripDetailService', function ($resource, $cookieStore) {
 
   var remoteUrl = 'http://websys1.stern.nyu.edu:7001/api/trips/:tripId';
 
-  var resource = $resource(url, {});
+  var resource = $resource(remoteUrl, {});
 
   return {
 
@@ -37,7 +37,7 @@ starter.factory('TripDetailService', function ($resource, $cookieStore) {
     },
 
     deleteTrip : function(tripId){
-      var deleteResource = $resource(url, {tripId : '@id'},
+      var deleteResource = $resource(remoteUrl, {tripId : '@id'},
           {delete : { method : 'DELETE',  params : {token : $cookieStore.get('accessToken')}}});
       var toServerData = {
         tripId: tripId
@@ -51,7 +51,7 @@ starter.factory('TripDetailService', function ($resource, $cookieStore) {
         trip : trip,
         token : $cookieStore.get('accessToken')
       };
-      var updateResource = $resource(url, {tripId: '@id'},
+      var updateResource = $resource(remoteUrl, {tripId: '@id'},
           {update : {method : 'PUT', params:toServerData}});
       return updateResource.update({tripId : trip['id']});
     }

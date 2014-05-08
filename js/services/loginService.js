@@ -9,7 +9,7 @@ starter.factory('LoginService', function($resource , $log){
 
   var remoteUrl = 'http://websys1.stern.nyu.edu:7001/api/signin';
 
-  var resource = $resource(url, {});
+  var resource = $resource(remoteUrl, {});
 
   return {
 

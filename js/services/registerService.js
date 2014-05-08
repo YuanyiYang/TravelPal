@@ -8,7 +8,7 @@ starter.factory('RegisterService', function($resource, $log){
 
   var remoteUrl = 'http://websys1.stern.nyu.edu:7001/api/signup/';
 
-  var resource = $resource(url,{});
+  var resource = $resource(remoteUrl,{});
 
   return {
     register : function(user){
