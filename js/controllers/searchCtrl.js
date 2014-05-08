@@ -50,7 +50,7 @@ starter.controller('SearchCtrl', function($scope,$ionicPopup,$log,$state, Search
         if(returnTrips.length==0){
           showConfirm();
         }else{
-          $log.log('fucked');
+          $log.log('We find the trip!');
         }
       }
     }, function(){
