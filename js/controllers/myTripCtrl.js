@@ -17,7 +17,7 @@ starter.controller('MyTripCtrl', function ($scope, $ionicPopup, $state ,$log, $c
     confirmPopup.then(function(res){
       if(res){
         $log.log("Delete Successful to reload");
-        $state.reload();
+        $state.forceReload();
       }else{
         $log.log('Delete Successful to reload not reload');
       }
@@ -30,7 +30,7 @@ starter.controller('MyTripCtrl', function ($scope, $ionicPopup, $state ,$log, $c
     });
     alertPopup.then(function(res){
       $log.log('Delete error alert Again');
-      $state.reload();
+      $state.forceReload();
     });
   };
 
@@ -45,7 +45,7 @@ starter.controller('MyTripCtrl', function ($scope, $ionicPopup, $state ,$log, $c
   };
 
   $scope.edit = function(trip){
-    $state.go('tab.editTrip');
+    $state.go('tab.editTrip',{tripId : trip['id']});
   };
 
   $scope.addMyTrip = function () {

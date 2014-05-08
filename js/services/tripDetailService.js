@@ -44,6 +44,16 @@ starter.factory('TripDetailService', function ($resource, $cookieStore) {
       };
       console.log("In tripDetail Service, delete to server " + angular.toJson(toServerData));
       return deleteResource.delete(toServerData);
+    },
+
+    updateTrip : function(trip){
+      var toServerData = {
+        trip : trip,
+        token : $cookieStore.get('accessToken')
+      };
+      var updateResource = $resource(url, {tripId: '@id'},
+          {update : {method : 'PUT', params:toServerData}});
+      return updateResource.update({tripId : trip['id']});
     }
   }
 });

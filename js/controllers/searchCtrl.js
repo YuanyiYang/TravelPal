@@ -2,8 +2,22 @@
  * Created by yuanyiyang on 5/7/14.
  */
 
-starter.controller('SearchCtrl', function($scope,$ionicPopup,$log, SearchTripService){
+starter.controller('SearchCtrl', function($scope,$ionicPopup,$log,$state, SearchTripService){
 
+
+  var showConfirm = function(){
+    var confirmPopup = $ionicPopup.confirm({
+      title: 'No Trips Found, Search Again!'
+    });
+    confirmPopup.then(function(res){
+      if(res){
+        $log.log("Stay in search to search again");
+      }else{
+        $log.log('Stay at register');
+        $state.go('tab.top');
+      }
+    });
+  };
 
 
   var showAlert = function(){
@@ -23,23 +37,25 @@ starter.controller('SearchCtrl', function($scope,$ionicPopup,$log, SearchTripSer
     if(!isUndefinedOrNullOrEmpty(trip['destination'])){
       var keywordObj = {
         destination : trip['destination']
-      };
-      SearchTripService.searchWithKeyWord(keywordObj).$promise.then(function(data){
-        $log.log('Search OK');
-        $log.log(data);
-      }, function(){
-        $log.error('Reject by Server');
-      });
+      }
     } else if(!isUndefinedOrNullOrEmpty(trip['fee'])){
       var keywordObj = {
         fee : trip['fee']
-      };
-      SearchTripService.searchWithKeyWord(keywordObj).$promise.then(function(data){
-        $log.log('Search OK');
-        $log.log(data);
-      }, function(){
-        $log.error('Reject by Server');
-      });
+      }
     }
+    SearchTripService.searchWithKeyWord(keywordObj).$promise.then(function(data){
+      if(data['meta']['status']=='200' && data['meta']['msg']=='OK'){
+        $log.log('Search OK');
+        var returnTrips = data['data'];
+        if(returnTrips.length==0){
+          showConfirm();
+        }else{
+          $log.log('fucked');
+        }
+      }
+    }, function(){
+      $log.error('Reject by Server');
+      showAlert();
+    });
   }
 });

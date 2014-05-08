@@ -103,6 +103,17 @@ starter.run(function ($ionicPlatform) {
                 templateUrl: 'templates/editTrip.html',
                 controller: 'EditTripCtrl'
               }
+            },
+            resolve : {
+              myTripDetail : function(TripDetailService, $stateParams, $log){
+                return TripDetailService.getTripDetail($stateParams['tripId']).$promise.then(function(data){
+                  if(data['meta']['status'] == '200' && data['meta']['msg']=='OK'){
+                    return data;
+                  }
+                }, function(){
+                  $log.error('In app JS, cannot route to edit trip detail');
+                });
+              }
             }
           })
 
@@ -198,4 +209,17 @@ starter.config(function($httpProvider) {
 //      'application/x-www-form-urlencoded';
 
   $httpProvider.defaults.headers.post['Content-Type'] = 'application/json';
+});
+
+starter.config(function($provide) {
+  $provide.decorator('$state', function($delegate, $stateParams) {
+    $delegate.forceReload = function() {
+      return $delegate.go($delegate.current, $stateParams, {
+        reload: true,
+        inherit: false,
+        notify: true
+      });
+    };
+    return $delegate;
+  });
 });
