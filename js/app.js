@@ -147,12 +147,33 @@ starter.run(function ($ionicPlatform) {
             }
           })
 
+          .state('tab.result', {
+            url : '/top/result',
+            views : {
+              'tab-top' : {
+                templateUrl : 'templates/searchResult.html',
+                controller:'SearchResultCtrl'
+              }
+            }
+          })
+
           .state('tab.trip-detail', {
-            url: '/top/:tripId',
+            url: '/top/result/:tripId',
             views: {
               'tab-top': {
                 templateUrl: 'templates/trip-detail.html',
                 controller: 'TripDetailCtrl'
+              }
+            },
+            resolve : {
+              myTripDetail : function(TripDetailService, $stateParams, $log){
+                return TripDetailService.getTripDetail($stateParams['tripId']).$promise.then(function(data){
+                  if(data['meta']['status'] == '200' && data['meta']['msg']=='OK'){
+                    return data;
+                  }
+                }, function(){
+                  $log.error('In app JS, cannot route to my trip detail');
+                });
               }
             }
           })

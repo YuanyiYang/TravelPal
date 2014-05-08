@@ -2,7 +2,7 @@
  * Created by yuanyiyang on 5/7/14.
  */
 
-starter.controller('SearchCtrl', function($scope,$ionicPopup,$log,$state, SearchTripService){
+starter.controller('SearchCtrl', function($scope,$ionicPopup,$log,$state, SearchTripService, SearchResultService){
 
 
   var showConfirm = function(){
@@ -50,7 +50,10 @@ starter.controller('SearchCtrl', function($scope,$ionicPopup,$log,$state, Search
         if(returnTrips.length==0){
           showConfirm();
         }else{
+          SearchResultService.searchResult = returnTrips;
           $log.log('We find the trip!');
+          $state.go('tab.result');
+          //$log.log(angular.toJson(SearchResultService.searchResult))
         }
       }
     }, function(){

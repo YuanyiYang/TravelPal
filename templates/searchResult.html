@@ -1,0 +1,10 @@
+<ion-view title="Result">
+
+    <ion-content class="has-header padding">
+        <ion-list >
+            <ion-item ng-repeat="trip in resultTrips" type="item-text-wrap" href="#/tab/top/result/{{trip['id']}}" item="trip">
+                Destination: {{trip['destination']}}
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>
