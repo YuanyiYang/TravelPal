@@ -4,11 +4,11 @@
 
 starter.controller('MyTripCtrl', function ($scope, $state ,$log ,myTrips) {
 
-  $log.log("In myTripCtrl, the whole data returned by server is " + angular.toJson(myTrips));
+  //$log.log("In myTripCtrl, the whole data returned by server is " + angular.toJson(myTrips));
 
   $scope.trips = myTrips['data'];
 
-  var removeTrip = function(trip){
+  $scope.removeTrip = function(trip){
     console.log($scope.trips.indexOf(trip));
     $scope.trips.splice($scope.trips.indexOf(trip),1);
     console.log($scope.trips);

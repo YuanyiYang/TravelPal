@@ -6,12 +6,14 @@
         </button>
     </ion-nav-buttons>
   <ion-content class="has-header padding">
-      <ion-list can-swipe="true" option-buttons="itemButtons">
+      <ion-list >
           <ion-item ng-repeat="trip in trips" type="item-text-wrap" href="#/tab/myTrips/{{trip['id']}}" item="trip">
               Destination: {{trip['destination']}}
+              <ion-option-button class="button-positive">Share</ion-option-button>
           </ion-item>
-
       </ion-list>
   </ion-content>
 </ion-view>
 
+
+<!--can-swipe="true" option-buttons="itemButtons"-->
