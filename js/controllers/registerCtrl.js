@@ -2,7 +2,7 @@
  * Created by yuanyiyang on 4/29/14.
  */
 
-starter.controller('RegisterCtrl', function ($scope, $log, $state, $ionicPopup, RegisterService) {
+starter.controller('RegisterCtrl', function ($scope, $log, $state, $ionicPopup, $cookieStore, RegisterService) {
 
   $scope.user = {
     gender: 'Male'
@@ -15,10 +15,9 @@ starter.controller('RegisterCtrl', function ($scope, $log, $state, $ionicPopup, 
     });
     confirmPopup.then(function (res) {
       if (res) {
-        $log.log("GoTo: Login");
-        $state.go('login');
+        $state.go('tab.myTrips');
       } else {
-        $log.log('Stay at register');
+        $state.go('tab.myTrips');
       }
     });
   };
@@ -29,6 +28,7 @@ starter.controller('RegisterCtrl', function ($scope, $log, $state, $ionicPopup, 
     });
     alertPopup.then(function (res) {
       $log.log('Register Again');
+      $state.forceReload();
     });
   };
 
@@ -44,6 +44,8 @@ starter.controller('RegisterCtrl', function ($scope, $log, $state, $ionicPopup, 
         //$log.log("successful register");
         var meta = data['meta'];
         if (meta['status'] == '200' && meta['msg'] == 'OK') {
+          $cookieStore.put('accessToken', data['data']['token']);
+          $cookieStore.put('userId', data['data']['id']);
           showConfirm();
         }
       }, function () {
