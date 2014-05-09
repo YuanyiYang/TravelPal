@@ -3,7 +3,7 @@
  */
 
 starter
-    .controller('TripDetailCtrl', function ($scope,$log,$state, $cookieStore, myTripDetail) {
+    .controller('TripDetailCtrl', function ($scope,$log,$state,$ionicPopup, $cookieStore, myTripDetail, MyTripsService) {
 
       var localOwner = [];
       var include = function(arr,obj) {
@@ -21,12 +21,40 @@ starter
           localOwner.push(part['user_id']);
         }
       };
+
+
+      var showConfirm = function(){
+        var confirmPopup = $ionicPopup.confirm({
+          title: 'You have applied successfully'
+        });
+        confirmPopup.then(function(res){
+          if(res){
+
+          }else{
+
+          }
+        });
+      };
+
+      var showAlert = function(){
+        var alertPopup = $ionicPopup.alert({
+          title: "Rejected By Server!"
+        });
+        alertPopup.then(function(res){
+
+        });
+      };
+
       $scope.showBoolean = include(localOwner,parseInt($cookieStore.get('userId')));
+
       $scope.chat = function () {
 
       };
       $scope.join = function(trip){
-
+        MyTripsService.apply(trip).$promise.then(function(){
+           showConfirm();
+        }, function(){
+            showAlert();
+        });
       }
-
     });
