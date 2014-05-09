@@ -3,7 +3,7 @@
  */
 
 starter
-    .controller('TripDetailCtrl', function ($scope,$log,$state,$ionicPopup, $cookieStore, myTripDetail, MyTripsService) {
+    .controller('TripDetailCtrl', function ($scope,$log,$state,$ionicPopup, $cookieStore, myTripDetail, MyTripsService, JoinGroupService) {
 
       $scope.myId = $cookieStore.get('userId');
 
@@ -80,5 +80,25 @@ starter
         }, function(){
           showAlert();
         });
+      };
+
+      $scope.approveUser = function(trip, user){
+        //console.log(user);
+        JoinGroupService.approve(trip,user).$promise.then(function(data){
+
+          showConfirm(' approved ');
+        }, function(){
+          showAlert()
+        });
+      };
+
+      $scope.kickUser = function(trip, user){
+        JoinGroupService.kick(trip,user).$promise.then(function(data){
+          if(data['meta']['status']=='200' && data['meta']['msg']=='OK'){
+            showConfirm(' declined ');
+          }
+        }, function(){
+          showAlert();
+        })
       }
     });
