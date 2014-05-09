@@ -13,12 +13,18 @@ starter.factory('TripDetailService', function ($resource, $cookieStore) {
   return {
 
     getTripDetail: function (tripId) {
-
       var toServerData = {
         tripId: tripId,
         token: $cookieStore.get('accessToken')
       };
       console.log("In tripDetail Service, get to server " + angular.toJson(toServerData));
+      return resource.get(toServerData);
+    },
+
+    getHot : function(){
+      var toServerData = {
+        token : $cookieStore.get('accessToken')
+      };
       return resource.get(toServerData);
     },
 

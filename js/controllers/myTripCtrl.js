@@ -10,6 +10,7 @@ starter.controller('MyTripCtrl', function ($scope, $ionicPopup, $state ,$log, $c
 
   $scope.myId = $cookieStore.get('userId');
 
+
   var showConfirm = function(){
     var confirmPopup = $ionicPopup.confirm({
       title: 'Delete Successful'
@@ -51,6 +52,8 @@ starter.controller('MyTripCtrl', function ($scope, $ionicPopup, $state ,$log, $c
   $scope.addMyTrip = function () {
     $state.go('tab.new');
   };
+
+
 });
 
 //$scope.itemButtons = [

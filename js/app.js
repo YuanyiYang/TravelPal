@@ -87,6 +87,7 @@ starter.run(function ($ionicPlatform) {
               myTripDetail : function(TripDetailService, $stateParams, $log){
                 return TripDetailService.getTripDetail($stateParams['tripId']).$promise.then(function(data){
                   if(data['meta']['status'] == '200' && data['meta']['msg']=='OK'){
+                    //console.log(data);
                     return data;
                   }
                 }, function(){
@@ -133,6 +134,17 @@ starter.run(function ($ionicPlatform) {
               'tab-top': {
                 templateUrl: 'templates/tab-top.html',
                 controller: 'TopCtrl'
+              }
+            },
+            resolve : {
+              topTrip : function(TripDetailService, $log){
+                return TripDetailService.getHot().$promise.then(function(data){
+                  if(data['meta']['status'] == '200' && data['meta']['msg']=='OK'){
+                    return data;
+                  }
+                }, function(){
+                  $log.error('In app JS, cannot route to hot trip');
+                });
               }
             }
           })
@@ -199,7 +211,6 @@ starter.run(function ($ionicPlatform) {
 
           })
 
-
           .state('tab.update', {
             url: '/account/update',
             views: {
@@ -209,11 +220,7 @@ starter.run(function ($ionicPlatform) {
               }
             }
           })
-
-
       ;
-
-
       // if none of the above states are matched, use this as the fallback
       $urlRouterProvider.otherwise('/');
 

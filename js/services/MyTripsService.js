@@ -27,6 +27,14 @@ starter.factory('MyTripsService', function($resource,$cookieStore){
           { join : {method: 'PUT'}
           });
       return applyResource.join(angular.toJson(toServerData));
+    },
+
+    retract : function(trip){
+      var toServerData = {
+        token : $cookieStore.get('accessToken')
+      };
+      var retractResource = $resource(remoteUrl, {userId :  $cookieStore.get('userId') , tripId : trip['id']});
+      return retractResource.delete(toServerData);
     }
   }
 });

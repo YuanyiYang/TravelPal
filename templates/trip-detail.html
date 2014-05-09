@@ -77,13 +77,21 @@
 
           <label class="item" ng-repeat="user in participants">
               Name : {{user['user']['name']}}
+              <!--<ion-option-button class="button-assertive"  ng-click="removeTrip(trip)">Kick</ion-option-button>-->
+              <!--<ion-option-button class="button-calm"  ng-click="edit(trip)">Approve</ion-option-button>-->
           </label>
 
       </div>
 
       <div class="padding">
-          <button class="button button-block button-positive"  ng-click="join(detailTrip)" ng-hide="showBoolean">
+          <button class="button button-block button-positive"  ng-click="join(detailTrip)" ng-hide="joinBoolean">
              Apply to join in!
+          </button>
+          <button class="button button-block button-assertive"  ng-click="withdraw(detailTrip)" ng-show="withdrawBoolean">
+              Withdraw application!
+          </button>
+          <button class="button button-block button-assertive"  ng-click="quit(detailTrip)" ng-show="quitBoolean">
+              Quit Group!
           </button>
       </div>
 

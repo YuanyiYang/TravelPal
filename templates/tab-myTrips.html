@@ -11,6 +11,7 @@
               Destination: {{trip['destination']}}
               <ion-option-button class="button-assertive" ng-show="myId == trip['owner']['id']" ng-click="removeTrip(trip)">Delete</ion-option-button>
               <ion-option-button class="button-calm" ng-show="myId == trip['owner']['id']" ng-click="edit(trip)">Edit</ion-option-button>
+
           </ion-item>
       </ion-list>
   </ion-content>
