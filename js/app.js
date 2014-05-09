@@ -97,6 +97,7 @@ starter.run(function ($ionicPlatform) {
             }
           })
 
+
           .state('tab.editTrip', {
             url : '/myTrips/:tripId/edit',
             views : {

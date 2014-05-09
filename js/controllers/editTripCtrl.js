@@ -4,9 +4,9 @@
 
 starter.controller('EditTripCtrl', function($scope, $ionicPopup, $state, $log, myTripDetail, TripDetailService){
 
-  var changeFlag = false;
-
-  var originalObject = myTripDetail;
+  var originalObject = myTripDetail['data'];
+  var dest = originalObject['destination'];
+  var fee = originalObject['fee'];
 
   var showConfirm = function(){
     var confirmPopup = $ionicPopup.confirm({
@@ -29,7 +29,7 @@ starter.controller('EditTripCtrl', function($scope, $ionicPopup, $state, $log, m
     alertPopup.then(function(){
 
     });
-  }
+  };
 
   var showAlert = function(){
     var alertPopup = $ionicPopup.alert({
@@ -46,21 +46,19 @@ starter.controller('EditTripCtrl', function($scope, $ionicPopup, $state, $log, m
 
   $scope.update = function(trip, updateForm){
     if(updateForm.$valid){
-      for(var key in originalObject){
-        if(originalObject['key']!=trip['key']){
-          changeFlag = true;
-        }
-      }
-      if(changeFlag){
-        changeFlag = false;
+
+      if(dest!=trip['destination'] || fee!=trip['fee']){
         TripDetailService.updateTrip(trip).$promise.then(function(data){
-
-
+            if(data['meta']['status']=='200' && data['meta']['msg']=='OK'){
+              showConfirm();
+            }else{
+              showAlert();
+            }
         }, function(){
-
+          showAlert();
         })
       }else{
-
+          showNotChangeAlert();
       }
 
     }

@@ -5,7 +5,7 @@
   The Friends service returns an array of friend data
 -->
 
-<ion-view title="New Trip">
+<ion-view title="Edit Trip">
 
 
     <ion-content has-header="true" padding="true">
@@ -26,7 +26,7 @@
                 </div>
                 <label class="item item-input">
                     <span class="input-label">Start_Date</span>
-                    <input type="date" required ng-model="tripDetail.startDate">
+                    <input type="date" ng-model="tripDetail.startDate">
                 </label>
 
                 <label class="item item-input">
@@ -34,18 +34,18 @@
                 </label>
                 <label class="item item-input">
                     <span class="input-label">End_Date</span>
-                    <input type="date" required ng-model="tripDetail.endDate">
+                    <input type="date" ng-model="tripDetail.endDate">
                 </label>
                 <label class="item item-input">
                     <span class="input-label">Current</span> {{tripDetail.end_date | date: 'yyyy-MM-dd'}}
                 </label>
 
                 <div class="padding">
-                    <button class="button button-block button-positive" ng-disabled="editTripForm.$invalid"
+                    <button class="button button-block button-positive"
                             ng-click="update(tripDetail, editTripForm)">
                         Update
                     </button>
-                    <!--<p class="text-center">-->
+                    <!--<p class="text-center">  ng-disabled="editTripForm.$invalid" -->
                     <!--<a href="#/forget">Forgot password</a>-->
                     <!--</p>-->
                 </div>

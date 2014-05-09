@@ -54,12 +54,16 @@ starter.factory('TripDetailService', function ($resource, $cookieStore) {
 
     updateTrip : function(trip){
       var toServerData = {
-        trip : trip,
+        trip : {
+          destination : trip['destination'],
+          fee : trip['fee']
+        },
         token : $cookieStore.get('accessToken')
       };
-      var updateResource = $resource(remoteUrl, {tripId: '@id'},
-          {update : {method : 'PUT', params:toServerData}});
-      return updateResource.update({tripId : trip['id']});
+      var updateResource = $resource(remoteUrl, {tripId: trip['id']},
+          {update : {method : 'PUT'}});
+      console.log("To updateTrip, it send to server");
+      return updateResource.update(toServerData);
     }
   }
 });

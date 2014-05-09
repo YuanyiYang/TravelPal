@@ -13,6 +13,7 @@ starter
       $scope.owner = $scope.detailTrip['owner'];
       $scope.participants = $scope.detailTrip['participants'];
       var localOwner = [];
+      localOwner.push($scope.owner['id']);
       var include = function(arr,obj) {
         return (arr.indexOf(obj) != -1);
       };
@@ -27,6 +28,7 @@ starter
         }
         return false;
       };
+
 
       for(var part in $scope.participants){
           localOwner.push($scope.participants[part]['user_id']);

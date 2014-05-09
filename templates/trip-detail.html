@@ -78,10 +78,10 @@
 
           <ion-item ng-repeat="user in participants" type="item-text-wrap" item="user">
               Name : {{user['user']['name']}}
-              <ion-option-button class="button-assertive" ng-show="user['status'] && user['user_id']!=owner['id']" ng-click="kickUser(detailTrip, user)">Kick</ion-option-button>
-              <ion-option-button class="button-calm" ng-show="(!user['status']) && user['user_id']!=owner['id']"
+              <ion-option-button class="button-assertive" ng-show="user['status'] && user['user_id']!=owner['id'] && myId == owner['id']" ng-click="kickUser(detailTrip, user)">Kick</ion-option-button>
+              <ion-option-button class="button-calm" ng-show="(!user['status']) && user['user_id']!=owner['id'] && myId == owner['id']"
                       ng-click="approveUser(detailTrip ,user)">Approve</ion-option-button>
-              <ion-option-button class="button-assertive" ng-show="(!user['status']) && user['user_id']!=owner['id']"
+              <ion-option-button class="button-assertive" ng-show="(!user['status']) && user['user_id']!=owner['id'] && myId == owner['id']"
                       ng-click="kickUser(detailTrip, user)">Decline</ion-option-button>
           </ion-item>
 
