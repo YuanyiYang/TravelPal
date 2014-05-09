@@ -58,9 +58,9 @@ starter
       $scope.joinBoolean = include(localOwner,parseInt($cookieStore.get('userId')));
       $scope.withdrawBoolean = include(localOwner,parseInt($cookieStore.get('userId'))) && approval() && $cookieStore.get('userId')!=$scope.owner['id'];
       $scope.quitBoolean = (!$scope.withdrawBoolean )&& $cookieStore.get('userId')!=$scope.owner['id'] && include(localOwner, parseInt($cookieStore.get('userId')));
-      console.log(approval());
-      $log.info($scope.owner['id']);
-      console.log('withdraw' + $scope.withdrawBoolean);
+//      console.log(approval());
+//      $log.info($scope.owner['id']);
+//      console.log('withdraw' + $scope.withdrawBoolean);
       $scope.chat = function () {
 
       };

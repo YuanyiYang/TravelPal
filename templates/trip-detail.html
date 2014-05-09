@@ -5,19 +5,20 @@
   The Friends service returns an array of friend data
 -->
 <ion-view title="{{owner['name']}}">
-  <ion-content has-header="true" padding="true">
+    <ion-nav-buttons side="right">
+        <button class="button button-positive button-clear no-animation"
+                ng-click="chat()">
+            Chat
+        </button>
+        <!--<button class="button button-positive button-clear no-animation"-->
+        <!--ng-show="owner['id']==myId" ng-click="edit(detailTrip)">-->
+        <!--Edit-->
+        <!--</button>-->
+    </ion-nav-buttons>
 
-      <ion-nav-buttons side="right">
-          <button class="button button-positive button-clear no-animation"
-                  ng-click="chat()">
-              Chat
-          </button>
-          <!--<button class="button button-positive button-clear no-animation"-->
-                   <!--ng-show="owner['id']==myId" ng-click="edit(detailTrip)">-->
-              <!--Edit-->
-          <!--</button>-->
-      </ion-nav-buttons>
+    <ion-content has-header="true" padding="true">
 
+        <ion-list >
 
       <div class="list">
 
@@ -75,11 +76,17 @@
              Currently, only the owner!
           </label>
 
-          <label class="item" ng-repeat="user in participants">
+          <ion-item ng-repeat="user in participants" type="item-text-wrap" item="user">
               Name : {{user['user']['name']}}
-              <!--<ion-option-button class="button-assertive"  ng-click="removeTrip(trip)">Kick</ion-option-button>-->
-              <!--<ion-option-button class="button-calm"  ng-click="edit(trip)">Approve</ion-option-button>-->
-          </label>
+              <ion-option-button class="button-assertive" ng-show="user['status'] && user['user_id']!=owner['id']" ng-click="">Kick</ion-option-button>
+              <ion-option-button class="button-calm" ng-show="(!user['status']) && user['user_id']!=owner['id']">Approve</ion-option-button>
+              <ion-option-button class="button-assertive" ng-show="(!user['status']) && user['user_id']!=owner['id']">Decline</ion-option-button>
+          </ion-item>
+
+          <!--<label class="item" ng-repeat="user in participants" >-->
+              <!--Name : {{user['user']['name']}}-->
+             <!---->
+          <!--</label>-->
 
       </div>
 
@@ -90,7 +97,7 @@
           <button class="button button-block button-assertive"  ng-click="withdraw(detailTrip)" ng-show="withdrawBoolean">
               Withdraw application!
           </button>
-          <button class="button button-block button-assertive"  ng-click="quit(detailTrip)" ng-show="quitBoolean">
+          <button class="button button-block button-assertive"  ng-click="withdraw(detailTrip)" ng-show="quitBoolean">
               Quit Group!
           </button>
       </div>
@@ -101,5 +108,6 @@
               <!--<i class="icon ion-android-call"></i>-->
           <!--</button>-->
       <!--</div>-->
+            </ion-list>
   </ion-content>
 </ion-view>
