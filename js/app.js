@@ -97,6 +97,15 @@ starter.run(function ($ionicPlatform) {
             }
           })
 
+          .state('tab.chat', {
+            url : '/myTrips/:tripId/chat',
+            views : {
+              'tab-myTrips' : {
+                templateUrl: 'templates/chat.html',
+                controller : 'ChatCtrl'
+              }
+            }
+          })
 
           .state('tab.editTrip', {
             url : '/myTrips/:tripId/edit',

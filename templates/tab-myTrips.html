@@ -1,4 +1,5 @@
 <ion-view title="MyTrips">
+
     <ion-nav-buttons side="right">
         <button class="button button-positive button-clear no-animation"
                 ng-click="addMyTrip()">
@@ -6,6 +7,11 @@
         </button>
     </ion-nav-buttons>
   <ion-content class="has-header padding">
+      <ion-refresher on-refresh="doRefresh()"
+                     pulling-text="Pull to refresh..."
+                     refreshing-text="Refreshing!"
+                     refreshing-icon="ion-loading-c">
+      </ion-refresher>
       <ion-list >
           <ion-item ng-repeat="trip in trips" type="item-text-wrap" href="#/tab/myTrips/{{trip['id']}}" item="trip">
               Destination: {{trip['destination']}}

@@ -3,7 +3,7 @@
  */
 
 starter
-    .controller('TripDetailCtrl', function ($scope,$log,$state,$ionicPopup, $cookieStore, myTripDetail, MyTripsService, JoinGroupService) {
+    .controller('TripDetailCtrl', function ($scope,$log,$state,$ionicPopup, $cookieStore, myTripDetail, MyTripsService, JoinGroupService, ChatService) {
 
       $scope.myId = $cookieStore.get('userId');
 
@@ -12,6 +12,7 @@ starter
 
       $scope.owner = $scope.detailTrip['owner'];
       $scope.participants = $scope.detailTrip['participants'];
+      $scope.chats = $scope.detailTrip['chats'];
       var localOwner = [];
       localOwner.push($scope.owner['id']);
       var include = function(arr,obj) {
@@ -60,11 +61,16 @@ starter
       $scope.joinBoolean = include(localOwner,parseInt($cookieStore.get('userId')));
       $scope.withdrawBoolean = include(localOwner,parseInt($cookieStore.get('userId'))) && approval() && $cookieStore.get('userId')!=$scope.owner['id'];
       $scope.quitBoolean = (!$scope.withdrawBoolean )&& $cookieStore.get('userId')!=$scope.owner['id'] && include(localOwner, parseInt($cookieStore.get('userId')));
+      $scope.chatBoolean = include(localOwner, $scope.myId);
 //      console.log(approval());
 //      $log.info($scope.owner['id']);
 //      console.log('withdraw' + $scope.withdrawBoolean);
       $scope.chat = function () {
-
+        ChatService.chatDetail = $scope.chats;
+        console.log($scope.chats);
+        ChatService.tripId = $scope.detailTrip['id'];
+        console.log($scope.detailTrip['id'])
+        $state.go('tab.chat', {tripId : $scope.detailTrip['id']});
       };
       $scope.join = function(trip){
         MyTripsService.apply(trip).$promise.then(function(){

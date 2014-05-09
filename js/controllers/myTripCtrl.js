@@ -2,7 +2,7 @@
  * Created by yuanyiyang on 4/27/14.
  */
 
-starter.controller('MyTripCtrl', function ($scope, $ionicPopup, $state ,$log, $cookieStore ,myTrips, TripDetailService) {
+starter.controller('MyTripCtrl', function ($scope, $ionicPopup, $state ,$log, $cookieStore, $timeout ,myTrips, TripDetailService) {
 
   //$log.log("In myTripCtrl, the whole data returned by server is " + angular.toJson(myTrips));
 
@@ -52,6 +52,13 @@ starter.controller('MyTripCtrl', function ($scope, $ionicPopup, $state ,$log, $c
   $scope.addMyTrip = function () {
     $state.go('tab.new');
   };
+
+  $scope.doRefresh = function(){
+    $timeout(function(){
+      $scope.$broadcast('scroll.refreshComplete');
+      $state.forceReload();
+    },1000)
+  }
 
 
 });

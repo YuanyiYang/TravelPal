@@ -4,4 +4,8 @@
 
 starter.factory('ChatService', function(){
 
+  return {
+    chatDetail : [],
+    tripId : {}
+  }
 });
