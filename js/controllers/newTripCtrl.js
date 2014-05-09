@@ -5,38 +5,38 @@
 starter.controller('NewTripCtrl', function ($scope, $log, $state, $ionicPopup, TripDetailService) {
 
 
-  var showConfirm = function(){
+  var showConfirm = function () {
     var confirmPopup = $ionicPopup.confirm({
-      title : "Trip add successfully",
-      template : "Go back"
+      title: "Trip add successfully",
+      template: "Go back"
     });
-    confirmPopup.then(function(res){
-      if(res){
+    confirmPopup.then(function (res) {
+      if (res) {
         $state.go('tab.myTrips');
-      }else{
+      } else {
         $log.log("Stay in the newTrip page");
       }
     })
   };
 
-  var showAlert = function(){
+  var showAlert = function () {
     var alertPopup = $ionicPopup.alert({
-      title : "Add Trip Denied!"
+      title: "Add Trip Denied!"
     });
-    alertPopup.then(function(res){
+    alertPopup.then(function (res) {
       $log.warn("Stay in the add trip page");
     });
   };
 
   $scope.submitTrip = function (trip, newTripForm) {
-   if(newTripForm.$valid){
-     TripDetailService.save(trip).$promise.then(function(data){
-       if(data['meta']['status']=='200' && data['meta']['msg']=='OK'){
-         showConfirm();
-       }
-     }, function(){
+    if (newTripForm.$valid) {
+      TripDetailService.save(trip).$promise.then(function (data) {
+        if (data['meta']['status'] == '200' && data['meta']['msg'] == 'OK') {
+          showConfirm();
+        }
+      }, function () {
         showAlert();
-     });
-   }
+      });
+    }
   }
 });

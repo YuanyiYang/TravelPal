@@ -3,10 +3,10 @@
  */
 
 starter
-    .controller('TopCtrl', function($scope, $state, topTrip){
+    .controller('TopCtrl', function ($scope, $state, topTrip) {
       $scope.trips = topTrip['data'];
       //console.log( $scope.trips);
-       $scope.search = function(){
-         $state.go('tab.search');
-       }
+      $scope.search = function () {
+        $state.go('tab.search');
+      }
     });

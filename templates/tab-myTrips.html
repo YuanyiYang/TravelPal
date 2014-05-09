@@ -6,21 +6,25 @@
             New Trip
         </button>
     </ion-nav-buttons>
-  <ion-content class="has-header padding">
-      <ion-refresher on-refresh="doRefresh()"
-                     pulling-text="Pull to refresh..."
-                     refreshing-text="Refreshing!"
-                     refreshing-icon="ion-loading-c">
-      </ion-refresher>
-      <ion-list >
-          <ion-item ng-repeat="trip in trips" type="item-text-wrap" href="#/tab/myTrips/{{trip['id']}}" item="trip">
-              Destination: {{trip['destination']}}
-              <ion-option-button class="button-assertive" ng-show="myId == trip['owner']['id']" ng-click="removeTrip(trip)">Delete</ion-option-button>
-              <ion-option-button class="button-calm" ng-show="myId == trip['owner']['id']" ng-click="edit(trip)">Edit</ion-option-button>
+    <ion-content class="has-header padding">
+        <ion-refresher on-refresh="doRefresh()"
+                       pulling-text="Pull to refresh..."
+                       refreshing-text="Refreshing!"
+                       refreshing-icon="ion-loading-c">
+        </ion-refresher>
+        <ion-list>
+            <ion-item ng-repeat="trip in trips" type="item-text-wrap" href="#/tab/myTrips/{{trip['id']}}" item="trip">
+                Destination: {{trip['destination']}}
+                <ion-option-button class="button-assertive" ng-show="myId == trip['owner']['id']"
+                                   ng-click="removeTrip(trip)">Delete
+                </ion-option-button>
+                <ion-option-button class="button-calm" ng-show="myId == trip['owner']['id']" ng-click="edit(trip)">
+                    Edit
+                </ion-option-button>
 
-          </ion-item>
-      </ion-list>
-  </ion-content>
+            </ion-item>
+        </ion-list>
+    </ion-content>
 </ion-view>
 
 

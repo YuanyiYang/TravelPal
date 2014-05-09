@@ -21,9 +21,9 @@ starter.factory('TripDetailService', function ($resource, $cookieStore) {
       return resource.get(toServerData);
     },
 
-    getHot : function(){
+    getHot: function () {
       var toServerData = {
-        token : $cookieStore.get('accessToken')
+        token: $cookieStore.get('accessToken')
       };
       return resource.get(toServerData);
     },
@@ -42,9 +42,9 @@ starter.factory('TripDetailService', function ($resource, $cookieStore) {
       return resource.save(angular.toJson(toServerData));
     },
 
-    deleteTrip : function(tripId){
-      var deleteResource = $resource(remoteUrl, {tripId : '@id'},
-          {delete : { method : 'DELETE',  params : {token : $cookieStore.get('accessToken')}}});
+    deleteTrip: function (tripId) {
+      var deleteResource = $resource(remoteUrl, {tripId: '@id'},
+          {delete: { method: 'DELETE', params: {token: $cookieStore.get('accessToken')}}});
       var toServerData = {
         tripId: tripId
       };
@@ -52,16 +52,16 @@ starter.factory('TripDetailService', function ($resource, $cookieStore) {
       return deleteResource.delete(toServerData);
     },
 
-    updateTrip : function(trip){
+    updateTrip: function (trip) {
       var toServerData = {
-        trip : {
-          destination : trip['destination'],
-          fee : trip['fee']
+        trip: {
+          destination: trip['destination'],
+          fee: trip['fee']
         },
-        token : $cookieStore.get('accessToken')
+        token: $cookieStore.get('accessToken')
       };
       var updateResource = $resource(remoteUrl, {tripId: trip['id']},
-          {update : {method : 'PUT'}});
+          {update: {method: 'PUT'}});
       console.log("To updateTrip, it send to server");
       return updateResource.update(toServerData);
     }

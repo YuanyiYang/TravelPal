@@ -1,12 +1,13 @@
 /* Empty. Add your own CSS if you like */
 
-.item.item-icon-left .ion-person-add{
+.item.item-icon-left .ion-person-add {
     font-size: 24px;
 }
 
 .slider {
     height: 100%;
 }
+
 .slider-slide {
     padding-top: 80px;
     color: #000;

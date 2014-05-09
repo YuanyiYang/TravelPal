@@ -18,98 +18,106 @@
 
     <ion-content has-header="true" padding="true">
 
-        <ion-list >
+        <ion-list>
 
-      <div class="list">
+            <div class="list">
 
-          <div class="item item-divider">
-             Trip Detail
-
-
-          </div>
+                <div class="item item-divider">
+                    Trip Detail
 
 
+                </div>
 
-          <label class="item">
-              Destination :   {{detailTrip.destination}}
-          </label>
-          <label class="item">
-              Expected Fee : {{detailTrip.fee}}
-          </label>
 
-          <label class="item">
-              Start Date : {{detailTrip.start_date | date: 'yyyy-MM-dd'}}
-          </label>
+                <label class="item">
+                    Destination : {{detailTrip.destination}}
+                </label>
+                <label class="item">
+                    Expected Fee : {{detailTrip.fee}}
+                </label>
 
-          <label class="item">
-              End Date : {{detailTrip.end_date | date : 'yyyy-MM-dd'}}
-          </label>
+                <label class="item">
+                    Start Date : {{detailTrip.start_date | date: 'yyyy-MM-dd'}}
+                </label>
 
-          <div class="item item-divider">
-              Owner Detail
-          </div>
+                <label class="item">
+                    End Date : {{detailTrip.end_date | date : 'yyyy-MM-dd'}}
+                </label>
 
-          <label class="item">
-              Name :   {{owner.name}}
-          </label>
-          <label class="item">
-              Age : {{owner.age}}
-          </label>
+                <div class="item item-divider">
+                    Owner Detail
+                </div>
 
-          <label class="item">
-              Gender : {{owner.gender}}
-          </label>
+                <label class="item">
+                    Name : {{owner.name}}
+                </label>
+                <label class="item">
+                    Age : {{owner.age}}
+                </label>
 
-          <label class="item">
-              College : {{owner.college}}
-          </label>
+                <label class="item">
+                    Gender : {{owner.gender}}
+                </label>
 
-          <label class="item">
-              Major : {{owner.major}}
-          </label>
+                <label class="item">
+                    College : {{owner.college}}
+                </label>
 
-          <div class="item item-divider">
-              Participants
-          </div>
+                <label class="item">
+                    Major : {{owner.major}}
+                </label>
 
-          <label class="item" ng-show="participants.length == '1'">
-             Currently, only the owner!
-          </label>
+                <div class="item item-divider">
+                    Participants
+                </div>
 
-          <ion-item ng-repeat="user in participants" type="item-text-wrap" item="user">
-              Name : {{user['user']['name']}}
-              <ion-option-button class="button-assertive" ng-show="user['status'] && user['user_id']!=owner['id'] && myId == owner['id']" ng-click="kickUser(detailTrip, user)">Kick</ion-option-button>
-              <ion-option-button class="button-calm" ng-show="(!user['status']) && user['user_id']!=owner['id'] && myId == owner['id']"
-                      ng-click="approveUser(detailTrip ,user)">Approve</ion-option-button>
-              <ion-option-button class="button-assertive" ng-show="(!user['status']) && user['user_id']!=owner['id'] && myId == owner['id']"
-                      ng-click="kickUser(detailTrip, user)">Decline</ion-option-button>
-          </ion-item>
+                <label class="item" ng-show="participants.length == '1'">
+                    Currently, only the owner!
+                </label>
 
-          <!--<label class="item" ng-repeat="user in participants" >-->
-              <!--Name : {{user['user']['name']}}-->
-             <!---->
-          <!--</label>-->
+                <ion-item ng-repeat="user in participants" type="item-text-wrap" item="user">
+                    Name : {{user['user']['name']}}
+                    <ion-option-button class="button-assertive"
+                                       ng-show="user['status'] && user['user_id']!=owner['id'] && myId == owner['id']"
+                                       ng-click="kickUser(detailTrip, user)">Kick
+                    </ion-option-button>
+                    <ion-option-button class="button-calm"
+                                       ng-show="(!user['status']) && user['user_id']!=owner['id'] && myId == owner['id']"
+                                       ng-click="approveUser(detailTrip ,user)">Approve
+                    </ion-option-button>
+                    <ion-option-button class="button-assertive"
+                                       ng-show="(!user['status']) && user['user_id']!=owner['id'] && myId == owner['id']"
+                                       ng-click="kickUser(detailTrip, user)">Decline
+                    </ion-option-button>
+                </ion-item>
 
-      </div>
+                <!--<label class="item" ng-repeat="user in participants" >-->
+                <!--Name : {{user['user']['name']}}-->
+                <!---->
+                <!--</label>-->
 
-      <div class="padding">
-          <button class="button button-block button-positive"  ng-click="join(detailTrip)" ng-hide="joinBoolean">
-             Apply to join in!
-          </button>
-          <button class="button button-block button-assertive"  ng-click="withdraw(detailTrip)" ng-show="withdrawBoolean">
-              Withdraw application!
-          </button>
-          <button class="button button-block button-assertive"  ng-click="withdraw(detailTrip)" ng-show="quitBoolean">
-              Quit Group!
-          </button>
-      </div>
+            </div>
 
-      <!--<div class="item item-button-right">-->
-           <!--Contact Me-->
-          <!--<button class="button button-positive">-->
-              <!--<i class="icon ion-android-call"></i>-->
-          <!--</button>-->
-      <!--</div>-->
-            </ion-list>
-  </ion-content>
+            <div class="padding">
+                <button class="button button-block button-positive" ng-click="join(detailTrip)" ng-hide="joinBoolean">
+                    Apply to join in!
+                </button>
+                <button class="button button-block button-assertive" ng-click="withdraw(detailTrip)"
+                        ng-show="withdrawBoolean">
+                    Withdraw application!
+                </button>
+                <button class="button button-block button-assertive" ng-click="withdraw(detailTrip)"
+                        ng-show="quitBoolean">
+                    Quit Group!
+                </button>
+            </div>
+
+            <!--<div class="item item-button-right">-->
+            <!--Contact Me-->
+            <!--<button class="button button-positive">-->
+            <!--<i class="icon ion-android-call"></i>-->
+            <!--</button>-->
+            <!--</div>-->
+        </ion-list>
+    </ion-content>
 </ion-view>

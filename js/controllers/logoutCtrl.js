@@ -4,8 +4,8 @@
 
 starter.controller('LogoutCtrl', function ($scope, $timeout, $state, $cookieStore, $log, LogoutService) {
 
-  LogoutService.logout().$promise.then(function(data){
-    if(data['meta']['status'] == '200' && data['meta']['msg']=='OK'){
+  LogoutService.logout().$promise.then(function (data) {
+    if (data['meta']['status'] == '200' && data['meta']['msg'] == 'OK') {
       $log.log('Logout Successfully');
       $timeout(function () {
         $cookieStore.remove('accessToken');
@@ -13,7 +13,7 @@ starter.controller('LogoutCtrl', function ($scope, $timeout, $state, $cookieStor
         $state.go('login');
       }, 2000)
     }
-  }, function(response){
+  }, function (response) {
     $log.info(response);
     $log.error('Logout Error')
   });

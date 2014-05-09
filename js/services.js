@@ -1,6 +1,6 @@
 angular.module('starter.services', [])
 
-.factory('LogoutService', function($resource, $cookieStore){
+    .factory('LogoutService', function ($resource, $cookieStore) {
 
       var url = 'http://localhost:3000/api/signout/';
       var remoteUrl = 'http://websys1.stern.nyu.edu:7001/api/signout/';
@@ -8,9 +8,9 @@ angular.module('starter.services', [])
       var resource = $resource(remoteUrl, {});
 
       return {
-        logout : function(){
+        logout: function () {
           var dataToServer = {
-            token : $cookieStore.get('accessToken')
+            token: $cookieStore.get('accessToken')
           };
           return resource.delete(dataToServer);
         }

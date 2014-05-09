@@ -3,13 +3,13 @@
  */
 
 
-starter.controller('LoginCtrl', function ($scope, $state, $log, $cookieStore, $ionicPopup,  LoginService) {
+starter.controller('LoginCtrl', function ($scope, $state, $log, $cookieStore, $ionicPopup, LoginService) {
 
-  var showAlert = function(){
+  var showAlert = function () {
     var alertPopup = $ionicPopup.alert({
       title: "Email or Password Error!"
     });
-    alertPopup.then(function(res){
+    alertPopup.then(function (res) {
       $log.log('Login Again');
     });
   };
@@ -20,15 +20,15 @@ starter.controller('LoginCtrl', function ($scope, $state, $log, $cookieStore, $i
       LoginService.login(user).$promise.then(
           function (data) {
             var metaInfo = data['meta'];
-            console.log("Login data from server "  +  angular.toJson(data));
+            console.log("Login data from server " + angular.toJson(data));
             console.log(metaInfo);
-            if(metaInfo['status'] == '200' || metaInfo['msg'] == 'OK'){
+            if (metaInfo['status'] == '200' || metaInfo['msg'] == 'OK') {
               var token = data['data']['token'];
               var id = data['data']['id'];
               $cookieStore.put('accessToken', token);
               $cookieStore.put('userId', id);
               $state.go('tab.myTrips');
-            }else{
+            } else {
               showAlert();
             }
           },

@@ -1,4 +1,3 @@
-
 var starter = angular.module('starter', ['ionic', 'ngResource', 'ngCookies', 'starter.controllers', 'starter.services']);
 
 
@@ -29,7 +28,7 @@ starter.run(function ($ionicPlatform) {
             controller: 'LoginCtrl'
           })
 
-              .state('forgotpassword', {
+          .state('forgotpassword', {
             url: '/forget',
             templateUrl: 'templates/forgot-password.html',
             controller: 'GetPasswordCtrl'
@@ -58,17 +57,17 @@ starter.run(function ($ionicPlatform) {
                 controller: 'MyTripCtrl'
               }
             },
-            resolve : {
-              myTrips : function(MyTripsService){
-                return MyTripsService.all().$promise.then(function(data){
+            resolve: {
+              myTrips: function (MyTripsService) {
+                return MyTripsService.all().$promise.then(function (data) {
                   //console.log('In app.js of resolve property of myTrips');
                   //console.log(angular.toJson(data));
-                  if(data['meta']['status'] == '200' && data['meta']['msg']=='OK'){
+                  if (data['meta']['status'] == '200' && data['meta']['msg'] == 'OK') {
                     return data;
-                  }else{
+                  } else {
                     console.log('In appJS resolve for myTrips, undefined error!');
                   }
-                }, function(response){
+                }, function (response) {
                   console.log('ERROR');
                 })
               }
@@ -83,14 +82,14 @@ starter.run(function ($ionicPlatform) {
                 controller: 'TripDetailCtrl'
               }
             },
-            resolve : {
-              myTripDetail : function(TripDetailService, $stateParams, $log){
-                return TripDetailService.getTripDetail($stateParams['tripId']).$promise.then(function(data){
-                  if(data['meta']['status'] == '200' && data['meta']['msg']=='OK'){
+            resolve: {
+              myTripDetail: function (TripDetailService, $stateParams, $log) {
+                return TripDetailService.getTripDetail($stateParams['tripId']).$promise.then(function (data) {
+                  if (data['meta']['status'] == '200' && data['meta']['msg'] == 'OK') {
                     //console.log(data);
                     return data;
                   }
-                }, function(){
+                }, function () {
                   $log.error('In app JS, cannot route to my trip detail');
                 });
               }
@@ -98,30 +97,30 @@ starter.run(function ($ionicPlatform) {
           })
 
           .state('tab.chat', {
-            url : '/myTrips/:tripId/chat',
-            views : {
-              'tab-myTrips' : {
+            url: '/myTrips/:tripId/chat',
+            views: {
+              'tab-myTrips': {
                 templateUrl: 'templates/chat.html',
-                controller : 'ChatCtrl'
+                controller: 'ChatCtrl'
               }
             }
           })
 
           .state('tab.editTrip', {
-            url : '/myTrips/:tripId/edit',
-            views : {
-              'tab-myTrips' : {
+            url: '/myTrips/:tripId/edit',
+            views: {
+              'tab-myTrips': {
                 templateUrl: 'templates/editTrip.html',
                 controller: 'EditTripCtrl'
               }
             },
-            resolve : {
-              myTripDetail : function(TripDetailService, $stateParams, $log){
-                return TripDetailService.getTripDetail($stateParams['tripId']).$promise.then(function(data){
-                  if(data['meta']['status'] == '200' && data['meta']['msg']=='OK'){
+            resolve: {
+              myTripDetail: function (TripDetailService, $stateParams, $log) {
+                return TripDetailService.getTripDetail($stateParams['tripId']).$promise.then(function (data) {
+                  if (data['meta']['status'] == '200' && data['meta']['msg'] == 'OK') {
                     return data;
                   }
-                }, function(){
+                }, function () {
                   $log.error('In app JS, cannot route to edit trip detail');
                 });
               }
@@ -146,13 +145,13 @@ starter.run(function ($ionicPlatform) {
                 controller: 'TopCtrl'
               }
             },
-            resolve : {
-              topTrip : function(TripDetailService, $log){
-                return TripDetailService.getHot().$promise.then(function(data){
-                  if(data['meta']['status'] == '200' && data['meta']['msg']=='OK'){
+            resolve: {
+              topTrip: function (TripDetailService, $log) {
+                return TripDetailService.getHot().$promise.then(function (data) {
+                  if (data['meta']['status'] == '200' && data['meta']['msg'] == 'OK') {
                     return data;
                   }
-                }, function(){
+                }, function () {
                   $log.error('In app JS, cannot route to hot trip');
                 });
               }
@@ -170,11 +169,11 @@ starter.run(function ($ionicPlatform) {
           })
 
           .state('tab.result', {
-            url : '/top/result',
-            views : {
-              'tab-top' : {
-                templateUrl : 'templates/searchResult.html',
-                controller:'SearchResultCtrl'
+            url: '/top/result',
+            views: {
+              'tab-top': {
+                templateUrl: 'templates/searchResult.html',
+                controller: 'SearchResultCtrl'
               }
             }
           })
@@ -187,13 +186,13 @@ starter.run(function ($ionicPlatform) {
                 controller: 'TripDetailCtrl'
               }
             },
-            resolve : {
-              myTripDetail : function(TripDetailService, $stateParams, $log){
-                return TripDetailService.getTripDetail($stateParams['tripId']).$promise.then(function(data){
-                  if(data['meta']['status'] == '200' && data['meta']['msg']=='OK'){
+            resolve: {
+              myTripDetail: function (TripDetailService, $stateParams, $log) {
+                return TripDetailService.getTripDetail($stateParams['tripId']).$promise.then(function (data) {
+                  if (data['meta']['status'] == '200' && data['meta']['msg'] == 'OK') {
                     return data;
                   }
-                }, function(){
+                }, function () {
                   $log.error('In app JS, cannot route to my trip detail');
                 });
               }
@@ -237,7 +236,7 @@ starter.run(function ($ionicPlatform) {
     });
 
 
-starter.config(function($httpProvider) {
+starter.config(function ($httpProvider) {
 
   $httpProvider.defaults.useXDomain = true;
   delete $httpProvider.defaults.headers.common['X-Requested-With'];
@@ -249,9 +248,9 @@ starter.config(function($httpProvider) {
 
 });
 
-starter.config(function($provide) {
-  $provide.decorator('$state', function($delegate, $stateParams) {
-    $delegate.forceReload = function() {
+starter.config(function ($provide) {
+  $provide.decorator('$state', function ($delegate, $stateParams) {
+    $delegate.forceReload = function () {
       return $delegate.go($delegate.current, $stateParams, {
         reload: true,
         inherit: false,

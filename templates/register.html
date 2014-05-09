@@ -1,61 +1,65 @@
 <ion-view title="Register">
     <ion-content>
         <form name="registerForm">
-        <div class="list">
-            <label class="item item-input">
-                <span class="input-label">UserEmail</span>
-                <input type="email" required ng-model="user.userEmail" name="uEmail">
-            </label>
-            <label class="item item-input">
-                <span class="input-label">Password</span>
-                <input type="password" required ng-model="user.password">
-            </label>
-            <label class="item item-input">
-                <span class="input-label">Confirm</span>
-                <input type="password" required ng-model="user.confirmPassword">
-            </label>
-            <div class="item item-input" ng-show=" user.password != user.confirmPassword ">
-               <span class="input-label" style="color: red">Passwords not the same</span>
-            </div>
-            <label class="item item-input">
-                <span class="input-label">Name</span>
-                <input type="text" required ng-model="user.name">
-            </label>
-            <label class="item item-input">
-                <span class="input-label">Age</span>
-                <input type="number" required name="age" min="18" max="100" ng-model="user.age" integer>
-            </label>
-            <div class="item item-input" ng-show="registerForm.age.$error.integer">
-                <span class="input-label" style="color: red">This is not a valid number!</span>
-            </div>
-            <div class="item item-input" ng-show="registerForm.age.$error.min || registerForm.age.$error.max">
-                <span class="input-label" style="color: red">You must be a grown-up!</span>
-            </div>
-            <label class="item item-input">
-                <span class="input-label">College</span>
-                <input type="text" required ng-model="user.college">
-            </label>
-            <label class="item item-input">
-                <span class="input-label">Major</span>
-                <input type="text" required ng-model="user.major">
-            </label>
-            <div class="item item-input item-select">
-                <div class="input-label">
-                    Gender
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label">UserEmail</span>
+                    <input type="email" required ng-model="user.userEmail" name="uEmail">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Password</span>
+                    <input type="password" required ng-model="user.password">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Confirm</span>
+                    <input type="password" required ng-model="user.confirmPassword">
+                </label>
+
+                <div class="item item-input" ng-show=" user.password != user.confirmPassword ">
+                    <span class="input-label" style="color: red">Passwords not the same</span>
                 </div>
-                <select ng-model="user.gender" required>
-                    <option>Male</option>
-                    <option>Female</option>
+                <label class="item item-input">
+                    <span class="input-label">Name</span>
+                    <input type="text" required ng-model="user.name">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Age</span>
+                    <input type="number" required name="age" min="18" max="100" ng-model="user.age" integer>
+                </label>
 
-                </select>
+                <div class="item item-input" ng-show="registerForm.age.$error.integer">
+                    <span class="input-label" style="color: red">This is not a valid number!</span>
+                </div>
+                <div class="item item-input" ng-show="registerForm.age.$error.min || registerForm.age.$error.max">
+                    <span class="input-label" style="color: red">You must be a grown-up!</span>
+                </div>
+                <label class="item item-input">
+                    <span class="input-label">College</span>
+                    <input type="text" required ng-model="user.college">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Major</span>
+                    <input type="text" required ng-model="user.major">
+                </label>
+
+                <div class="item item-input item-select">
+                    <div class="input-label">
+                        Gender
+                    </div>
+                    <select ng-model="user.gender" required>
+                        <option>Male</option>
+                        <option>Female</option>
+
+                    </select>
+                </div>
             </div>
-        </div>
 
-        <div class="padding">
-            <button class="button button-block button-positive" ng-disabled="registerForm.$invalid" ng-click="register(user, registerForm)">
-                Register
-            </button>
-        </div>
+            <div class="padding">
+                <button class="button button-block button-positive" ng-disabled="registerForm.$invalid"
+                        ng-click="register(user, registerForm)">
+                    Register
+                </button>
+            </div>
         </form>
     </ion-content>
 </ion-view>
