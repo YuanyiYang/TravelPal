@@ -4,12 +4,12 @@
 
 starter.factory('PostChatService', function ($resource, $cookieStore) {
 
-  var remoteUrl = 'http://websys1.stern.nyu.edu:7001/api/trips/:tripId/chat';
+  var remoteUrl = 'http://websys1.stern.nyu.edu:7001/api/trips/:tripId/chats';
 
   return {
     addChat: function (chat, tripId) {
       var toServerData = {
-        chats: {
+        chat: {
           content: chat
         },
         token: $cookieStore.get('accessToken')
