@@ -21,3 +21,7 @@
 input.ng-invalid.ng-dirty {
     background-color: pink
 }
+
+.img-responsive.img-center {
+    margin: 0 auto;
+}

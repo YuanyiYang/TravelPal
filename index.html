@@ -6,6 +6,15 @@
     <title></title>
 
     <!--<link href="lib/ionic/css/ionic.css" rel="stylesheet">-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
     <link href="http://code.ionicframework.com/nightly/css/ionic.min.css" rel="stylesheet">
     <link href="css/ionicons.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
@@ -58,8 +67,8 @@
   The nav bar that will be updated as we navigate between views.
 -->
 <ion-nav-bar class="bar-stable nav-title-slide-ios7">
-    <ion-nav-back-button class="button-icon icon ion-chevron-left">
-        <!--Back-->
+    <ion-nav-back-button class="button-clear">
+        <!--Back--><i class="ion-arrow-left-c"></i>
     </ion-nav-back-button>
 </ion-nav-bar>
 <!--
@@ -93,10 +102,18 @@
         </ion-nav-buttons>
         <ion-slide-box on-slide-changed="slideChanged(index)">
             <ion-slide>
-                <image src="http://www.bing.com/az/hprichbg/rb/TiltArc_EN-US8785976155_1366x768.jpg"></image>
+                <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                    <img alt="Introduction" class="img-responsive img-center" src="img/slide11.jpg" />
+                    <img alt="Introduction" class="img-responsive img-center" src="img/slide22.jpg" />
+                </div>
+
             </ion-slide>
             <ion-slide>
-                <image src="http://www.bing.com/az/hprichbg/rb/ConventodeSanGabriel_EN-US10998743968_1366x768.jpg"></image>
+
+                <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                    <img alt="Introduction2" class="img-responsive img-center" src="img/slide22.jpg" />
+                    <img alt="Introduction" class="img-responsive img-center" src="img/slide11.jpg" />
+                </div>
             </ion-slide>
             <ion-slide>
                 <h1>TravelPal</h1>
