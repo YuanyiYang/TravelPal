@@ -19,7 +19,11 @@ starter.factory('PostChatService', function ($resource, $cookieStore) {
       var resource = $resource(remoteUrl, {tripId: tripId});
 
       return resource.save(toServerData);
+    },
+    getChat: function (tripId){
+      var resource = $resource(remoteUrl, {tripId: tripId, token:$cookieStore.get('accessToken')});
+      return resource.get();
     }
-  }
 
+  }
 });

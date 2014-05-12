@@ -103,6 +103,18 @@ starter.run(function ($ionicPlatform) {
                 templateUrl: 'templates/chat.html',
                 controller: 'ChatCtrl'
               }
+            },
+            resolve : {
+              tripChats : function(PostChatService,$stateParams, $log){
+                return PostChatService.getChat($stateParams['tripId']).$promise.then(function(data){
+                  if(data['meta']['status']=='200' && data['meta']['msg']=='OK'){
+                    $log.log(data);
+                    return data;
+                  }
+                }, function(){
+                  console.log('Get Chats rejected by server');
+                });
+              }
             }
           })
 
@@ -188,6 +200,27 @@ starter.run(function ($ionicPlatform) {
             },
             resolve: {
               myTripDetail: function (TripDetailService, $stateParams, $log) {
+                return TripDetailService.getTripDetail($stateParams['tripId']).$promise.then(function (data) {
+                  if (data['meta']['status'] == '200' && data['meta']['msg'] == 'OK') {
+                    return data;
+                  }
+                }, function () {
+                  $log.error('In app JS, cannot route to my trip detail');
+                });
+              }
+            }
+          })
+
+          .state('tab.topResult', {
+            url : '/top/:tripId',
+            views : {
+              'tab-top' : {
+                templateUrl: 'templates/trip-detail.html',
+                controller: 'TripDetailCtrl'
+              }
+            },
+            resolve : {
+              myTripDetail : function (TripDetailService, $stateParams, $log) {
                 return TripDetailService.getTripDetail($stateParams['tripId']).$promise.then(function (data) {
                   if (data['meta']['status'] == '200' && data['meta']['msg'] == 'OK') {
                     return data;

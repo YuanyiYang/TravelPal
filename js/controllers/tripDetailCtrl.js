@@ -3,7 +3,7 @@
  */
 
 starter
-    .controller('TripDetailCtrl', function ($scope, $log, $state, $ionicPopup, $cookieStore, myTripDetail, MyTripsService, JoinGroupService, ChatService) {
+    .controller('TripDetailCtrl', function ($scope, $log, $state, $ionicPopup, $cookieStore, myTripDetail, MyTripsService, JoinGroupService) { //ChatService
 
       $scope.myId = $cookieStore.get('userId');
 
@@ -66,12 +66,12 @@ starter
 //      console.log(approval());
 //      $log.info($scope.owner['id']);
 //      console.log('withdraw' + $scope.withdrawBoolean);
-      $scope.chat = function () {
-        ChatService.chatDetail = $scope.chats;
-        console.log($scope.chats);
-        ChatService.tripId = $scope.detailTrip['id'];
-        console.log($scope.detailTrip['id'])
-        $state.go('tab.chat', {tripId: $scope.detailTrip['id']});
+      $scope.chat = function (tripId) {
+//        ChatService.chatDetail = $scope.chats;
+//        console.log($scope.chats);
+//        ChatService.tripId = $scope.detailTrip['id'];
+//        console.log($scope.detailTrip['id'])
+        $state.go('tab.chat', {tripId: tripId});
       };
       $scope.join = function (trip) {
         MyTripsService.apply(trip).$promise.then(function () {

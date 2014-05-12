@@ -9,7 +9,7 @@
 
     <ion-content class="has-header">
         <ion-list>
-            <ion-item ng-repeat="trip in trips" type="item-text-wrap">
+            <ion-item ng-repeat="trip in trips" type="item-text-wrap" href="#/tab/top/{{trip['id']}}">
                 Destination: {{trip['destination']}}
             </ion-item>
         </ion-list>
