@@ -43,10 +43,10 @@ starter.factory('TripDetailService', function ($resource, $cookieStore) {
     },
 
     deleteTrip: function (tripId) {
-      var deleteResource = $resource(remoteUrl, {tripId: '@id'},
-          {delete: { method: 'DELETE', params: {token: $cookieStore.get('accessToken')}}});
+      var deleteResource = $resource(remoteUrl, {tripId: tripId},
+          {delete: { method: 'DELETE'}});
       var toServerData = {
-        tripId: tripId
+        token : $cookieStore.get('accessToken')
       };
       console.log("In tripDetail Service, delete to server " + angular.toJson(toServerData));
       return deleteResource.delete(toServerData);
