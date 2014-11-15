@@ -118,7 +118,7 @@ Sample response:
 ```json
 {
     "data": [
-        { //Example for user initiated and joined trip
+        { 
             "user_id": 1,
             "trip_id": 1,
             "status": true,  //The user has been approved to join, owner of the trip will default be so
@@ -136,10 +136,10 @@ Sample response:
                   }
             }
         },
-        { //Example for user try to join trip initiated by someone else and yet been approved
+        { 
             "user_id": 1,
             "trip_id": 4,
-            "status": false,  //The user has applied but yet approved
+            "status": false,  
             "trip": {
                 "id": 4,
                 "destination": "Florida",
