@@ -16,6 +16,8 @@ The app is built following the RESTful API described below:
 * Get Trip Detail for certain trip_id
 * Edit Trip Detail for certain trip_id
 * Delete Trip for certain trip_id 
+* Leave a chat message
+* .......
 
 ###Host: 
 127.0.0.1:3000/api
@@ -46,7 +48,7 @@ parameters:
 ```
 
 Sample response:  
-When Register successfully  
+If the email doesn’t exist, then it will create a new user and it returns:  
 ```json
 {
     "meta": {
@@ -103,3 +105,159 @@ When logout successfully
     }
 }
 ```
+--------
+#### Get Trips list for certain user_id  
+Get the list of trips information that the user has either initiated or applied  
+path: /api/trips  
+Method: GET  
+Parameters:   
+```json
+{"token":"94ZcE8Otc1Ed_j_85rJ_mw"}
+```
+Sample response:  
+```json
+{
+    "data": [
+        { //Example for user initiated and joined trip
+            "user_id": 1,
+            "trip_id": 1,
+            "status": true,  //The user has been approved to join, owner of the trip will default be so
+            "trip": {
+                "id": 1,
+                "destination": "Alaska",
+                "start_date": "2020-10-10T00:00:00.000Z",
+                "end_date": "2020-10-30T00:00:00.000Z",
+                "fee": 2000,
+                "owner_id": 1
+                "owner": {
+                          "email": "ym731@nyu.edu",
+               "id": 20,
+               "name": "Yiran Mao"
+                  }
+            }
+        },
+        { //Example for user try to join trip initiated by someone else and yet been approved
+            "user_id": 1,
+            "trip_id": 4,
+            "status": false,  //The user has applied but yet approved
+            "trip": {
+                "id": 4,
+                "destination": "Florida",
+                "start_date": "2014-12-10T00:00:00.000Z",
+                "end_date": "2014-12-16T00:00:00.000Z",
+                "fee": 1000,
+                "owner_id": 2
+                "owner": {
+                          "email": "yuhaofool@126.com",
+               "id": 2,
+               "name": "Hao Yu"
+                  }
+            }
+        }
+    ],
+    "meta": {
+        "status": 200,
+        "msg": "OK"
+    }
+}
+```
+---------
+#### Create a new trip
+Create the trip information and also build the relationship between user and this trip.  
+path: /api/trips
+Method: POST  
+Parameters:   
+```json
+{"trip":{
+      "destination":"Heaven",
+      "start_date": "2014-04-29 04:09:52.422460", 
+      "end_date":"2014-04-29 04:09:52.422460", 
+      "fee":200
+      },
+  "token":"94ZcE8Otc1Ed_j_85rJ_mw"
+}
+```
+Sample response:   
+When the trip was created successfully  
+```json
+{
+    "meta": {
+        "status": 200,
+        "msg": "OK"
+    }
+}
+```
+----------
+#### Get Trip Detail for certain trip_id  
+Give the detail information about a single trip.   
+path: /api/trips/[trip_id]  
+Method: GET  
+Parameters:  
+```json
+{"token":"94ZcE8Otc1Ed_j_85rJ_mw"}
+```
+Sample response:  
+```json
+{
+    "data": {
+          "id": 1,
+          "destination": "Alaska",
+          "start_date": "2020-10-10T00:00:00.000Z",
+          "end_date": "2020-10-30T00:00:00.000Z",
+          "fee": 2000,
+          "owner_id": 1
+          "owner": {
+                "email": "ym731@nyu.edu",
+     "id": 20,
+     "name": "Yiran Mao"
+           }
+     },
+     "meta": {
+        "status": 200,
+        "msg": "OK"
+     }
+}
+```
+---------
+#### Edit Trip Detail for certain trip_id  
+Edit the detail information about a single trip.   
+path: /api/trips/[trip_id]  
+Method: PUT  
+Parameters: (limited to the following fields but not all of them need to be filled)  
+```json
+{"trip":{
+         "destination":"Earth",
+         "start_date": "2014-04-29 04:09:52.422460", 
+         "end_date":"2014-04-29 04:09:52.422460", 
+         "fee":200
+          },
+ "token":"94ZcE8Otc1Ed_j_85rJ_mw"
+}
+```
+Sample response:  
+```json
+{
+    "meta": {
+        "status": 200,
+        "msg": "OK"
+    }
+}
+```
+----------
+#### Delete Trip for certain trip_id 
+Delete the detail information about a single trip.   
+path: /api/trips/[trip_id]  
+Method: DELETE  
+Parameters:   
+```json
+{"token":"94ZcE8Otc1Ed_j_85rJ_mw"}
+```
+Sample response:   
+```json
+{
+    "meta": {
+        "status": 200,
+        "msg": "OK"
+    }
+}
+````
