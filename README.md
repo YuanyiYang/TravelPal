@@ -121,19 +121,19 @@ Sample response:
         { 
             "user_id": 1,
             "trip_id": 1,
-            "status": true,  //The user has been approved to join, owner of the trip will default be so
+            "status": true,  
             "trip": {
                 "id": 1,
                 "destination": "Alaska",
                 "start_date": "2020-10-10T00:00:00.000Z",
                 "end_date": "2020-10-30T00:00:00.000Z",
                 "fee": 2000,
-                "owner_id": 1
+                "owner_id": 1,
                 "owner": {
-                          "email": "ym731@nyu.edu",
-               "id": 20,
-               "name": "Yiran Mao"
-                  }
+                     "email": "ym731@nyu.edu",
+                     "id": 20,
+                     "name": "Yiran Mao"
+                 }
             }
         },
         { 
@@ -146,11 +146,11 @@ Sample response:
                 "start_date": "2014-12-10T00:00:00.000Z",
                 "end_date": "2014-12-16T00:00:00.000Z",
                 "fee": 1000,
-                "owner_id": 2
-                "owner": {
-                          "email": "yuhaofool@126.com",
-               "id": 2,
-               "name": "Hao Yu"
+                "owner_id": 2,
+                "owner":{
+                     "email": "yuhaofool@126.com",
+                     "id": 2,
+                     "name": "Hao Yu"
                   }
             }
         }
@@ -205,11 +205,11 @@ Sample response:
           "start_date": "2020-10-10T00:00:00.000Z",
           "end_date": "2020-10-30T00:00:00.000Z",
           "fee": 2000,
-          "owner_id": 1
+          "owner_id": 1,
           "owner": {
-                "email": "ym731@nyu.edu",
-     "id": 20,
-     "name": "Yiran Mao"
+              "email": "ym731@nyu.edu",
+               "id": 20,
+               "name": "Yiran Mao"
            }
      },
      "meta": {
